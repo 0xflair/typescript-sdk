@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.13.0 (2022-04-01)
+
+
+### Features
+
+* add simple erc721 collection to the registry ([36ee688](https://github.com/0xflair/typescript-sdk/commit/36ee688eca623341cb72e3bf16924a7f20771838))
+
+
+
+
+
 # 0.12.0 (2022-04-01)
 
 
