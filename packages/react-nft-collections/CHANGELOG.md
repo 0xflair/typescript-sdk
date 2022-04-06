@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2022-04-06)
+
+
+### Features
+
+* allow configuring units for crypto amount field ([9feb7fb](https://github.com/0xflair/typescript-sdk/commit/9feb7fb826a0ad86af6c5ea08357ce0f47a8308f))
+
+
+
+
+
 ## 0.16.1 (2022-04-05)
 
 
