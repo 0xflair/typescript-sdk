@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.19.3 (2022-04-10)
+
+
+### Bug Fixes
+
+* use locked major and minor versions for contracts registry ([d1e0ff7](https://github.com/0xflair/typescript-sdk/commit/d1e0ff731b67293f9c6ae59eed86f0fe3782c241))
+
+
+
+
+
 ## 0.19.2 (2022-04-10)
 
 
