@@ -25,11 +25,7 @@ export const useOwnerMinter = ({
   );
 
   const [
-    {
-      data: cnMintByOwnerData,
-      error: cnMintByOwnerError,
-      loading: cnMintByOwnerLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     mintByOwnerWrite,
   ] = useContractWrite(
     {
@@ -40,16 +36,11 @@ export const useOwnerMinter = ({
     'mintByOwner'
   );
 
-  const [
-    {
-      data: txMintByOwnerData,
-      error: txMintByOwnerError,
-      loading: txMintByOwnerLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: cnMintByOwnerData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const mintByOwner = useCallback(
     async (args?: { toAddress?: BytesLike; mintCount?: BigNumberish }) => {
@@ -67,11 +58,11 @@ export const useOwnerMinter = ({
   return [
     {
       data: {
-        txResponse: cnMintByOwnerData,
-        txReceipt: txMintByOwnerData,
+        txResponse: responseData,
+        txReceipt: receiptData,
       },
-      error: cnMintByOwnerError || txMintByOwnerError,
-      loading: cnMintByOwnerLoading || txMintByOwnerLoading,
+      error: responseError || receiptError,
+      loading: responseLoading || receiptLoading,
     },
     mintByOwner,
   ] as const;

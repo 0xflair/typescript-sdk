@@ -23,6 +23,8 @@ export const usePublicSaleStatus = ({
     version
   );
 
+  const readyToRead = Boolean(!skip && contractAddress);
+
   const [{ data, error, loading }, publicSaleStatusRead] = useContractRead(
     {
       addressOrName: contractAddress as string,
@@ -31,14 +33,14 @@ export const usePublicSaleStatus = ({
     },
     'publicSaleStatus',
     {
-      skip,
+      skip: !readyToRead,
       watch,
     }
   );
 
   return [
     {
-      data: data ? BigNumber.from(data) : undefined,
+      data: data ? data.toString() === 'true' : undefined,
       error,
       loading,
     },

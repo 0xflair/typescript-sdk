@@ -37,11 +37,7 @@ export const usePublicSaleMinter = ({
   });
 
   const [
-    {
-      data: cnMintPublicSaleData,
-      error: cnMintPublicSaleError,
-      loading: cnMintPublicSaleLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     mintPublicSaleWrite,
   ] = useContractWrite(
     {
@@ -52,16 +48,11 @@ export const usePublicSaleMinter = ({
     'mintPublicSale'
   );
 
-  const [
-    {
-      data: txMintPublicSaleData,
-      error: txMintPublicSaleError,
-      loading: txMintPublicSaleLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: cnMintPublicSaleData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const mintPublicSale = useCallback(
     async (args?: { mintCount?: BigNumberish }) => {
@@ -85,15 +76,11 @@ export const usePublicSaleMinter = ({
     {
       data: {
         publicSalePrice,
-        txResponse: cnMintPublicSaleData,
-        txReceipt: txMintPublicSaleData,
+        txResponse: responseData,
+        txReceipt: receiptData,
       },
-      error:
-        publicSalePriceError || cnMintPublicSaleError || txMintPublicSaleError,
-      loading:
-        publicSalePriceLoading ||
-        cnMintPublicSaleLoading ||
-        txMintPublicSaleLoading,
+      error: publicSalePriceError || responseError || receiptError,
+      loading: publicSalePriceLoading || responseLoading || receiptLoading,
     },
     mintPublicSale,
   ] as const;

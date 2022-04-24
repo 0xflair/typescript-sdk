@@ -59,7 +59,7 @@ export const usePreSaleAllowlistChecker = ({
     {
       args: [minterAddress, proofData],
       skip: !readyToRead || !proofData,
-      watch: false,
+      watch: true,
     }
   );
 

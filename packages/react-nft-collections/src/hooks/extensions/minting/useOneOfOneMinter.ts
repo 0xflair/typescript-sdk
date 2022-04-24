@@ -27,11 +27,7 @@ export const useOneOfOneMinter = ({
   );
 
   const [
-    {
-      data: cnMintWithTokenURIsByOwnerData,
-      error: cnMintWithTokenURIsByOwnerError,
-      loading: cnMintWithTokenURIsByOwnerLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     mintWithTokenURIsByOwnerWrite,
   ] = useContractWrite(
     {
@@ -42,16 +38,11 @@ export const useOneOfOneMinter = ({
     'mintWithTokenURIsByOwner'
   );
 
-  const [
-    {
-      data: txMintWithTokenURIsByOwnerData,
-      error: txMintWithTokenURIsByOwnerError,
-      loading: txMintWithTokenURIsByOwnerLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: cnMintWithTokenURIsByOwnerData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const mintWithTokenURIsByOwner = useCallback(
     async (args: {
@@ -77,12 +68,11 @@ export const useOneOfOneMinter = ({
   return [
     {
       data: {
-        txResponse: cnMintWithTokenURIsByOwnerData,
-        txReceipt: txMintWithTokenURIsByOwnerData,
+        txResponse: responseData,
+        txReceipt: receiptData,
       },
-      error: cnMintWithTokenURIsByOwnerError || txMintWithTokenURIsByOwnerError,
-      loading:
-        cnMintWithTokenURIsByOwnerLoading || txMintWithTokenURIsByOwnerLoading,
+      error: responseError || receiptError,
+      loading: responseLoading || receiptLoading,
     },
     mintWithTokenURIsByOwner,
   ] as const;

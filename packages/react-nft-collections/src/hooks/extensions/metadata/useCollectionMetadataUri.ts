@@ -23,12 +23,7 @@ export const useCollectionMetadataUri = ({
     version
   );
 
-  const readyToRead = Boolean(
-    !skip &&
-      contractAddress &&
-      signerOrProvider &&
-      ('call' in signerOrProvider || 'provider' in signerOrProvider)
-  );
+  const readyToRead = Boolean(!skip && contractAddress && signerOrProvider);
 
   const [{ data, error, loading }, contractURIRead] = useContractRead(
     {

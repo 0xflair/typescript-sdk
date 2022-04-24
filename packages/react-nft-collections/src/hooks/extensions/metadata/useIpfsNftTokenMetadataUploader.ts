@@ -1,33 +1,29 @@
 import { Version } from '@0xflair/contracts-registry';
 import { Environment } from '@0xflair/react-common';
 import { useIpfsFileUploader, useIpfsJsonUploader } from '@0xflair/react-ipfs';
-import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
-export type NftTokenMetadataUpdaterState = {
-  name?: string;
-  description?: string;
+import { NftTokenMetadata } from '../../../types';
+
+export type NftTokenMetadataInput = NftTokenMetadata & {
   imageFile?: File;
-  imageUrl?: string;
-  metadataUrl?: string;
-  additionalMetadataAttributes?: Record<string, any>;
+  animationFile?: File;
 };
 
 type Config = {
   env?: Environment;
   contractAddress?: string;
   version?: Version;
-  metadataState?: NftTokenMetadataUpdaterState;
-  setMetadataState?: Dispatch<SetStateAction<NftTokenMetadataUpdaterState>>;
+  newMetadata?: NftTokenMetadataInput;
 };
 
 export const useIpfsNftTokenMetadataUploader = ({
   env = Environment.PROD,
-  metadataState,
-  setMetadataState,
+  newMetadata,
 }: Config) => {
   const [
     {
-      data: imageUploaderUrl,
+      data: imageUri,
       loading: imageUploaderLoading,
       error: imageUploaderError,
     },
@@ -39,7 +35,19 @@ export const useIpfsNftTokenMetadataUploader = ({
 
   const [
     {
-      data: metadataUploaderUrl,
+      data: animationUri,
+      loading: animationUploaderLoading,
+      error: animationUploaderError,
+    },
+    uploadAnimation,
+  ] = useIpfsFileUploader({
+    env,
+    autoUpload: false,
+  });
+
+  const [
+    {
+      data: metadataUri,
       loading: metadataUploaderLoading,
       error: metadataUploaderError,
     },
@@ -50,61 +58,44 @@ export const useIpfsNftTokenMetadataUploader = ({
   });
 
   const uploadNftTokenMetadata = useCallback(async () => {
-    let imageUrl = metadataState?.imageUrl;
-    if (metadataState?.imageFile) {
-      imageUrl = await uploadImage({
-        fromFile: metadataState?.imageFile,
+    let imageUri = newMetadata?.image;
+    if (newMetadata?.imageFile) {
+      imageUri = await uploadImage({
+        fromFile: newMetadata?.imageFile,
       });
     }
-    if (!imageUrl) return;
 
-    const metadataUrl = await uploadMetadata({
+    let animationUri = newMetadata?.animation_url;
+    if (newMetadata?.animationFile) {
+      animationUri = await uploadAnimation({
+        fromFile: newMetadata?.animationFile,
+      });
+    }
+
+    const metadataUri = await uploadMetadata({
       jsonContent: {
-        name: metadataState?.name,
-        image: imageUrl,
-        description: metadataState?.description,
-        ...(metadataState?.additionalMetadataAttributes || {}),
-      },
+        ...newMetadata,
+        image: imageUri,
+        animation_url: animationUri,
+      } as NftTokenMetadata,
     });
 
-    return metadataUrl;
-  }, [metadataState, uploadImage, uploadMetadata]);
-
-  // Update the state when image and/or metadata is uploaded
-  useEffect(() => {
-    if (!setMetadataState) {
-      return;
-    }
-
-    if (
-      imageUploaderUrl === metadataState?.imageUrl &&
-      metadataUploaderUrl === metadataState?.metadataUrl
-    ) {
-      return;
-    }
-
-    setMetadataState((e) => ({
-      ...(e || {}),
-      imageUrl: imageUploaderUrl,
-      metadataUrl: metadataUploaderUrl,
-    }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setMetadataState, imageUploaderUrl, metadataUploaderUrl]);
+    return { imageUri, animationUri, metadataUri };
+  }, [newMetadata, uploadImage, uploadAnimation, uploadMetadata]);
 
   return [
     {
       data: {
-        imageUploaderUrl,
-        metadataUploaderUrl,
+        metadataUri,
+        imageUri,
+        animationUri,
       },
-      error: {
-        imageUploaderError,
-        metadataUploaderError,
-      },
-      loading: {
-        imageUploaderLoading,
-        metadataUploaderLoading,
-      },
+      error:
+        metadataUploaderError || imageUploaderError || animationUploaderError,
+      loading:
+        metadataUploaderLoading ||
+        imageUploaderLoading ||
+        animationUploaderLoading,
     },
     uploadNftTokenMetadata,
   ] as const;

@@ -23,6 +23,8 @@ export const usePublicSaleMaxMintPerTx = ({
     version
   );
 
+  const readyToRead = Boolean(!skip && contractAddress);
+
   const [{ data, error, loading }, publicSaleMaxMintPerTxRead] =
     useContractRead(
       {
@@ -32,7 +34,7 @@ export const usePublicSaleMaxMintPerTx = ({
       },
       'publicSaleMaxMintPerTx',
       {
-        skip,
+        skip: !readyToRead,
         watch,
       }
     );

@@ -57,6 +57,7 @@
     "@0xflair/react-common": "^0.25.0",
     "@0xflair/react-contracts": "^0.25.0",
     "@0xflair/react-ipfs": "^0.25.0",
+    "@0xflair/react-openzeppelin": "^0.25.0",
     "@0xflair/react-wallet": "^0.25.0",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",

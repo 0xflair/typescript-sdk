@@ -23,6 +23,8 @@ export const usePreSaleMaxMintPerWallet = ({
     version
   );
 
+  const readyToRead = Boolean(!skip && contractAddress);
+
   const [{ data, error, loading }, preSaleMaxMintPerWalletRead] =
     useContractRead(
       {
@@ -32,7 +34,7 @@ export const usePreSaleMaxMintPerWallet = ({
       },
       'preSaleMaxMintPerWallet',
       {
-        skip,
+        skip: !readyToRead,
         watch,
       }
     );

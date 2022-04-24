@@ -25,11 +25,7 @@ export const useRoleBasedMinter = ({
   );
 
   const [
-    {
-      data: cnMintByRoleData,
-      error: cnMintByRoleError,
-      loading: cnMintByRoleLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     mintByRoleWrite,
   ] = useContractWrite(
     {
@@ -40,16 +36,11 @@ export const useRoleBasedMinter = ({
     'mintByRole'
   );
 
-  const [
-    {
-      data: txMintByRoleData,
-      error: txMintByRoleError,
-      loading: txMintByRoleLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: cnMintByRoleData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const mintByRole = useCallback(
     async (args?: { toAddress?: BytesLike; mintCount?: BigNumberish }) => {
@@ -67,11 +58,11 @@ export const useRoleBasedMinter = ({
   return [
     {
       data: {
-        txResponse: cnMintByRoleData,
-        txReceipt: txMintByRoleData,
+        txResponse: responseData,
+        txReceipt: receiptData,
       },
-      error: cnMintByRoleError || txMintByRoleError,
-      loading: cnMintByRoleLoading || txMintByRoleLoading,
+      error: responseError || receiptError,
+      loading: responseLoading || receiptLoading,
     },
     mintByRole,
   ] as const;

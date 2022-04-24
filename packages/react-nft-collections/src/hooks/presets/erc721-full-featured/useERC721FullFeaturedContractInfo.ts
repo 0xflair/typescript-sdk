@@ -1,6 +1,6 @@
 import { loadContract, Version } from '@0xflair/contracts-registry';
 import { Provider } from '@ethersproject/providers';
-import { Signer } from 'ethers';
+import { BigNumberish, Signer } from 'ethers';
 import { useContractRead } from 'wagmi';
 
 type Config = {
@@ -12,29 +12,33 @@ type Config = {
 };
 
 export type ERC721FullFeaturedContractInfo = [
-  collectionName: string,
-  collectionSymbol: string,
-  collectionMetadataUri: string,
-  placeholderMetadataUri: string,
-  maxSupply: number,
-  preSalePrice: number,
-  preSaleMaxPerWallet: number,
-  publicSalePrice: number,
-  maxMintPerTx: number
+  maxSupply?: BigNumberish,
+  totalSupply?: BigNumberish,
+  callerBalance?: BigNumberish,
+  preSalePrice?: BigNumberish,
+  preSaleMaxMintPerWallet?: BigNumberish,
+  preSaleAllowlistClaimed?: BigNumberish,
+  preSaleStatus?: boolean | 'true' | 'false',
+  publicSalePrice?: BigNumberish,
+  publicSaleMaxMintPerTx?: BigNumberish,
+  publicSaleStatus?: boolean | 'true' | 'false'
 ];
 
-export const useERC721FullFeaturedContractInfo = <Contract = any>({
+export const useERC721FullFeaturedContractInfo = ({
   contractAddress,
   version,
   signerOrProvider,
-  watch,
+  skip,
+  watch = true,
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/presets/ERC721FullFeaturedCollection',
     version
   );
 
-  return useContractRead(
+  const readyToRead = Boolean(!skip && contractAddress);
+
+  const [{ data, error, loading }, readInfo] = useContractRead(
     {
       addressOrName: contractAddress as string,
       contractInterface: contract.artifact.abi,
@@ -42,8 +46,13 @@ export const useERC721FullFeaturedContractInfo = <Contract = any>({
     },
     'getInfo',
     {
-      skip: !contractAddress,
+      skip: !readyToRead,
       watch,
     }
   );
+
+  return [
+    { data: data as ERC721FullFeaturedContractInfo, error, loading },
+    readInfo,
+  ] as const;
 };

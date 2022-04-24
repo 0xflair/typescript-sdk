@@ -2,6 +2,7 @@ import { Version } from '@0xflair/contracts-registry';
 import { useRemoteJsonReader } from '@0xflair/react-ipfs';
 import { Provider } from '@ethersproject/providers';
 import { Signer } from 'ethers';
+import { useCallback } from 'react';
 
 import { NftCollectionMetadata } from '../../../types';
 import { useCollectionMetadataUri } from './useCollectionMetadataUri';
@@ -19,7 +20,7 @@ export const useCollectionMetadata = ({
   version,
   signerOrProvider,
   skip,
-  watch,
+  watch = false,
 }: Config) => {
   const [
     { data: contractURI, error: contractURIError, loading: contractURILoading },
@@ -41,8 +42,13 @@ export const useCollectionMetadata = ({
     fetchContractMetadata,
   ] = useRemoteJsonReader<NftCollectionMetadata>({
     uri: contractURI,
-    skip: true,
+    skip,
   });
+
+  const readCollectionMetadata = useCallback(async () => {
+    await contractURIRead();
+    await fetchContractMetadata();
+  }, [contractURIRead, fetchContractMetadata]);
 
   return [
     {
@@ -52,6 +58,6 @@ export const useCollectionMetadata = ({
         : undefined,
       loading: collectionMetadataLoading || contractURILoading,
     },
-    contractURIRead,
+    readCollectionMetadata,
   ] as const;
 };

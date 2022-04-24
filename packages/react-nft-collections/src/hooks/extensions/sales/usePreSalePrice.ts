@@ -23,6 +23,8 @@ export const usePreSalePrice = ({
     version
   );
 
+  const readyToRead = Boolean(!skip && contractAddress);
+
   const [{ data, error, loading }, preSalePriceRead] = useContractRead(
     {
       addressOrName: contractAddress as string,
@@ -31,7 +33,7 @@ export const usePreSalePrice = ({
     },
     'preSalePrice',
     {
-      skip,
+      skip: !readyToRead,
       watch,
     }
   );

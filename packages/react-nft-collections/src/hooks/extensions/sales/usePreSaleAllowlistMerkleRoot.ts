@@ -23,6 +23,8 @@ export const usePreSaleAllowlistMerkleRoot = ({
     version
   );
 
+  const readyToRead = Boolean(!skip && contractAddress);
+
   const [{ data, error, loading }, preSaleAllowlistMerkleRootRead] =
     useContractRead(
       {
@@ -32,7 +34,7 @@ export const usePreSaleAllowlistMerkleRoot = ({
       },
       'preSaleAllowlistMerkleRoot',
       {
-        skip,
+        skip: !readyToRead,
         watch,
       }
     );
