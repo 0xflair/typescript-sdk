@@ -26,7 +26,7 @@ type Config = {
 
 export const useCollectionMetadataUpdater = ({
   env = Environment.PROD,
-  contractAddress = ZERO_ADDRESS,
+  contractAddress,
   version,
   signerOrProvider,
   metadataUpdates,
@@ -108,12 +108,18 @@ export const useCollectionMetadataUpdater = ({
     const { collectionImageUri, collectionMetadataUri } =
       await uploadCollectionMetadata();
 
-    await updateCollectionMetadataUri({
-      collectionMetadataUri,
-    });
+    if (contractAddress) {
+      await updateCollectionMetadataUri({
+        collectionMetadataUri,
+      });
+    } else {
+      console.warn(
+        `Could not set collectionMetadataUri (${collectionMetadataUri}) because contractAddress is not provided (${contractAddress})`
+      );
+    }
 
     return { collectionImageUri, collectionMetadataUri };
-  }, [uploadCollectionMetadata, updateCollectionMetadataUri]);
+  }, [uploadCollectionMetadata, contractAddress, updateCollectionMetadataUri]);
 
   return [
     {

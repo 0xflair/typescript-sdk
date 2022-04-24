@@ -1,4 +1,3 @@
-import { Version } from '@0xflair/contracts-registry';
 import { Environment } from '@0xflair/react-common';
 import { useIpfsFileUploader, useIpfsJsonUploader } from '@0xflair/react-ipfs';
 import { useCallback } from 'react';
@@ -12,8 +11,6 @@ export type NftTokenMetadataInput = NftTokenMetadata & {
 
 type Config = {
   env?: Environment;
-  contractAddress?: string;
-  version?: Version;
   newMetadata?: NftTokenMetadataInput;
 };
 
