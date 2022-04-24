@@ -78,7 +78,7 @@ export const useContractDeployer = <ArgsType extends any[]>({
         return { data: undefined, error };
       }
     },
-    [cancelQuery, contractFactory],
+    [cancelQuery, contractFactory]
   );
 
   return [

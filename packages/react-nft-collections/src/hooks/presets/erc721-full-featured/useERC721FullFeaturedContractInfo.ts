@@ -1,7 +1,7 @@
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { Signer } from 'ethers';
 import { useContractRead } from 'wagmi';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -20,7 +20,7 @@ export type ERC721FullFeaturedContractInfo = [
   preSalePrice: number,
   preSaleMaxPerWallet: number,
   publicSalePrice: number,
-  maxMintPerTx: number,
+  maxMintPerTx: number
 ];
 
 export const useERC721FullFeaturedContractInfo = <Contract = any>({
@@ -31,7 +31,7 @@ export const useERC721FullFeaturedContractInfo = <Contract = any>({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/presets/ERC721FullFeaturedCollection',
-    version,
+    version
   );
 
   return useContractRead(
@@ -44,6 +44,6 @@ export const useERC721FullFeaturedContractInfo = <Contract = any>({
     {
       skip: !contractAddress,
       watch,
-    },
+    }
   );
 };

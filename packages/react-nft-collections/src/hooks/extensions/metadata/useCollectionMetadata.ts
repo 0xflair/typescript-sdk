@@ -1,9 +1,10 @@
-import { Signer } from 'ethers';
-import { useCollectionMetadataUri } from './useCollectionMetadataUri';
-import { Provider } from '@ethersproject/providers';
 import { Version } from '@0xflair/contracts-registry';
 import { useRemoteJsonReader } from '@0xflair/react-ipfs';
+import { Provider } from '@ethersproject/providers';
+import { Signer } from 'ethers';
+
 import { NftCollectionMetadata } from '../../../types';
+import { useCollectionMetadataUri } from './useCollectionMetadataUri';
 
 type Config = {
   contractAddress?: string;
@@ -21,11 +22,7 @@ export const useCollectionMetadata = ({
   watch,
 }: Config) => {
   const [
-    {
-      data: contractURI,
-      error: contractURIError,
-      loading: contractURILoading,
-    },
+    { data: contractURI, error: contractURIError, loading: contractURILoading },
     contractURIRead,
   ] = useCollectionMetadataUri({
     contractAddress,
@@ -50,7 +47,9 @@ export const useCollectionMetadata = ({
   return [
     {
       data: collectionMetadata,
-      error: !collectionMetadata ? collectionMetadataError || contractURIError : undefined,
+      error: !collectionMetadata
+        ? collectionMetadataError || contractURIError
+        : undefined,
       loading: collectionMetadataLoading || contractURILoading,
     },
     contractURIRead,

@@ -1,1 +1,1 @@
-export * from './erc721-full-featured'
+export * from './erc721-full-featured';

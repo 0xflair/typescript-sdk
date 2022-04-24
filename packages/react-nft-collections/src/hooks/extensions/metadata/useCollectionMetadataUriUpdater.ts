@@ -1,9 +1,9 @@
-import { Signer } from 'ethers';
-import { Provider } from '@ethersproject/providers';
-import { useContractWrite, useWaitForTransaction } from 'wagmi';
-import { useCallback } from 'react';
-import { Version, loadContract } from '@0xflair/contracts-registry';
+import { loadContract, Version } from '@0xflair/contracts-registry';
 import { BytesLike } from '@ethersproject/bytes';
+import { Provider } from '@ethersproject/providers';
+import { Signer } from 'ethers';
+import { useCallback } from 'react';
+import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -18,15 +18,11 @@ export const useCollectionMetadataUriUpdater = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721CollectionMetadataExtension',
-    version,
+    version
   );
 
   const [
-    {
-      data: responseData,
-      error: responseError,
-      loading: responseLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     setCollectionMetadataUriWrite,
   ] = useContractWrite(
     {
@@ -34,19 +30,14 @@ export const useCollectionMetadataUriUpdater = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'setContractURI',
+    'setContractURI'
   );
 
-  const [
-    {
-      data: receiptData,
-      error: receiptError,
-      loading: receiptLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: responseData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const setCollectionMetadataUri = useCallback(
     async (newValue: BytesLike) => {
@@ -58,7 +49,7 @@ export const useCollectionMetadataUriUpdater = ({
 
       return { response, receipt };
     },
-    [setCollectionMetadataUriWrite],
+    [setCollectionMetadataUriWrite]
   );
 
   return [

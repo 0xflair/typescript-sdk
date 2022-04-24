@@ -1,8 +1,8 @@
-import { BytesLike, Signer } from 'ethers';
-import { Provider } from '@ethersproject/providers';
-import { useContractWrite, useWaitForTransaction } from 'wagmi';
-import { useCallback } from 'react';
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
+import { BytesLike, Signer } from 'ethers';
+import { useCallback } from 'react';
+import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -17,15 +17,11 @@ export const usePublicSaleMaxMintPerTxUpdater = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
   const [
-    {
-      data: responseData,
-      error: responseError,
-      loading: responseLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     setPublicSaleMaxMintPerTxWrite,
   ] = useContractWrite(
     {
@@ -33,19 +29,14 @@ export const usePublicSaleMaxMintPerTxUpdater = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'setPublicSaleMaxMintPerTx',
+    'setPublicSaleMaxMintPerTx'
   );
 
-  const [
-    {
-      data: receiptData,
-      error: receiptError,
-      loading: receiptLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: responseData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const setPublicSaleMaxMintPerTx = useCallback(
     async (newValue: BytesLike) => {
@@ -57,7 +48,7 @@ export const usePublicSaleMaxMintPerTxUpdater = ({
 
       return { response, receipt };
     },
-    [setPublicSaleMaxMintPerTxWrite],
+    [setPublicSaleMaxMintPerTxWrite]
   );
 
   return [

@@ -1,7 +1,7 @@
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { BytesLike, Signer } from 'ethers';
 import { useContractRead } from 'wagmi';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -35,7 +35,7 @@ export const useOzHasRole = ({
       args: [role, address],
       skip: skip || !role || !address,
       watch,
-    },
+    }
   );
 
   return [

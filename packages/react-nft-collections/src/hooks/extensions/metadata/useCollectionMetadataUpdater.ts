@@ -1,10 +1,11 @@
-import { Environment, ZERO_ADDRESS } from "@0xflair/react-common";
-import { useIpfsFileUploader, useIpfsJsonUploader } from "@0xflair/react-ipfs";
-import { useCallback } from "react";
-import { Version } from "@0xflair/contracts-registry";
-import { useCollectionMetadataUriUpdater } from "./useCollectionMetadataUriUpdater";
-import { Signer } from "ethers";
-import { Provider } from "@ethersproject/providers";
+import { Version } from '@0xflair/contracts-registry';
+import { Environment, ZERO_ADDRESS } from '@0xflair/react-common';
+import { useIpfsFileUploader, useIpfsJsonUploader } from '@0xflair/react-ipfs';
+import { Provider } from '@ethersproject/providers';
+import { Signer } from 'ethers';
+import { useCallback } from 'react';
+
+import { useCollectionMetadataUriUpdater } from './useCollectionMetadataUriUpdater';
 
 export type NftCollectionMetadataUpdates = {
   collectionName?: string;
@@ -100,7 +101,7 @@ export const useCollectionMetadataUpdater = ({
         (args.collectionMetadataUri || collectionMetadataUploaderUri) as string
       );
     },
-    [collectionMetadataUploaderUri]
+    [collectionMetadataUploaderUri, setCollectionMetadataUri]
   );
 
   const uploadAndUpdateCollectionMetadata = useCallback(async () => {

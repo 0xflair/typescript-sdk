@@ -1,8 +1,8 @@
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { BigNumberish, BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
 import { useContractWrite, useWaitForTransaction } from 'wagmi';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -21,7 +21,7 @@ export const useOwnerMinter = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721OwnerMintExtension',
-    version,
+    version
   );
 
   const [
@@ -37,7 +37,7 @@ export const useOwnerMinter = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'mintByOwner',
+    'mintByOwner'
   );
 
   const [
@@ -61,7 +61,7 @@ export const useOwnerMinter = ({
 
       return { response, receipt };
     },
-    [mintByOwnerWrite, toAddress, mintCount],
+    [mintByOwnerWrite, toAddress, mintCount]
   );
 
   return [

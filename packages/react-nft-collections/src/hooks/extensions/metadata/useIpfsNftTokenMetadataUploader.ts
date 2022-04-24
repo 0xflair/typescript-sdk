@@ -1,7 +1,7 @@
-import { Environment } from '@0xflair/react-common';
-import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
 import { Version } from '@0xflair/contracts-registry';
+import { Environment } from '@0xflair/react-common';
 import { useIpfsFileUploader, useIpfsJsonUploader } from '@0xflair/react-ipfs';
+import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
 
 export type NftTokenMetadataUpdaterState = {
   name?: string;

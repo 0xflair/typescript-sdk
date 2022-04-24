@@ -1,10 +1,9 @@
-
-import * as axios from "axios";
+import { Environment, useAxiosGet } from '@0xflair/react-common';
+import { useLoginJwt } from '@0xflair/react-wallet';
+import * as axios from 'axios';
 
 import { FLAIR_ADDRESS_LISTS_BACKEND } from '../constants';
 import { AddressList } from '../types';
-import { Environment, useAxiosGet } from '@0xflair/react-common';
-import { useLoginJwt } from '@0xflair/react-wallet';
 
 type Config = {
   listId?: string;

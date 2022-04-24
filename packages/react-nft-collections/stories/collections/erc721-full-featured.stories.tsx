@@ -1,10 +1,11 @@
-import { useSigner } from "wagmi";
-import { WalletProvider, ConnectButton } from "@0xflair/react-wallet";
-import { useCallback } from "react";
+import { ConnectButton, WalletProvider } from '@0xflair/react-wallet';
+import { useCallback } from 'react';
+import { useSigner } from 'wagmi';
+
 import { useERC721FullFeaturedContractDeployer } from '../../src/hooks/presets/erc721-full-featured/useERC721FullFeaturedDeployer';
 
 export default {
-  title: "ERC721 Full Featured Collection",
+  title: 'ERC721 Full Featured Collection',
   decorators: [
     (Story: any) => (
       <WalletProvider>
@@ -48,6 +49,7 @@ export const Default = (args: Config) => {
       args.publicSalePrice,
       args.maxMintPerTx
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deployContract]);
 
   return (
@@ -73,10 +75,10 @@ export const Default = (args: Config) => {
 };
 
 Default.args = {
-  collectionName: "Flair Angels",
-  collectionSymbol: "ANGEL",
-  collectionMetadataUri: "ipfs://xxxxx",
-  placeholderMetadataUri: "ipfs://xxxxx",
+  collectionName: 'Flair Angels',
+  collectionSymbol: 'ANGEL',
+  collectionMetadataUri: 'ipfs://xxxxx',
+  placeholderMetadataUri: 'ipfs://xxxxx',
   maxSupply: 10000,
   preSalePrice: 1000000000000000000,
   preSaleMaxPerWallet: 2,

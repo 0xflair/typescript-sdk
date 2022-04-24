@@ -1,9 +1,8 @@
-import { Environment, useAxiosPatch } from "@0xflair/react-common";
-import { useLoginJwt } from "@0xflair/react-wallet";
+import { Environment, useAxiosPatch } from '@0xflair/react-common';
+import { useLoginJwt } from '@0xflair/react-wallet';
 
-import { FLAIR_NFT_COLLECTIONS_BACKEND } from "../../constants";
-import { NftCollection } from "../../types";
-
+import { FLAIR_NFT_COLLECTIONS_BACKEND } from '../../constants';
+import { NftCollection } from '../../types';
 
 type UpdaterConfig = {
   skip?: boolean;
@@ -11,10 +10,10 @@ type UpdaterConfig = {
 };
 
 export function useNftCollectionUpdater<
-  TCollectionConfig extends Record<string, any>,
+  TCollectionConfig extends Record<string, any>
 >(
   collection: Partial<NftCollection<TCollectionConfig>>,
-  { skip = false, env = Environment.PROD }: UpdaterConfig,
+  { skip = false, env = Environment.PROD }: UpdaterConfig
 ) {
   const loginJwt = useLoginJwt();
 

@@ -1,7 +1,7 @@
-import { BigNumber, Signer } from 'ethers';
 import { loadContract, Version } from '@0xflair/contracts-registry';
-import { useContractRead } from 'wagmi';
 import { Provider } from '@ethersproject/providers';
+import { BigNumber, Signer } from 'ethers';
+import { useContractRead } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -20,7 +20,7 @@ export const usePublicSalePrice = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PublicSaleExtension',
-    version,
+    version
   );
 
   const [{ data, error, loading }, publicSalePriceRead] = useContractRead(
@@ -33,7 +33,7 @@ export const usePublicSalePrice = ({
     {
       skip: !contractAddress || skip,
       watch,
-    },
+    }
   );
 
   return [

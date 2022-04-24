@@ -1,8 +1,8 @@
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { BigNumberish, BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
 import { useContractWrite, useWaitForTransaction } from 'wagmi';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -21,7 +21,7 @@ export const useRoleBasedMinter = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721RoleBasedMintExtension',
-    version,
+    version
   );
 
   const [
@@ -37,7 +37,7 @@ export const useRoleBasedMinter = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'mintByRole',
+    'mintByRole'
   );
 
   const [
@@ -61,7 +61,7 @@ export const useRoleBasedMinter = ({
 
       return { response, receipt };
     },
-    [mintByRoleWrite, toAddress, mintCount],
+    [mintByRoleWrite, toAddress, mintCount]
   );
 
   return [

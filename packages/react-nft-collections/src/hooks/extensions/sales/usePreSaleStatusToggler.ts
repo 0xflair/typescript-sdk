@@ -1,8 +1,8 @@
-import { Signer } from 'ethers';
-import { Provider } from '@ethersproject/providers';
-import { useContractWrite, useWaitForTransaction } from 'wagmi';
-import { useCallback } from 'react';
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
+import { Signer } from 'ethers';
+import { useCallback } from 'react';
+import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -17,15 +17,11 @@ export const usePreSaleStatusToggler = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
   const [
-    {
-      data: responseData,
-      error: responseError,
-      loading: responseLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     togglePreSaleStatusWrite,
   ] = useContractWrite(
     {
@@ -33,19 +29,14 @@ export const usePreSaleStatusToggler = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'togglePreSaleStatus',
+    'togglePreSaleStatus'
   );
 
-  const [
-    {
-      data: receiptData,
-      error: receiptError,
-      loading: receiptLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: responseData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const togglePreSaleStatus = useCallback(
     async (newValue: boolean) => {
@@ -57,7 +48,7 @@ export const usePreSaleStatusToggler = ({
 
       return { response, receipt };
     },
-    [togglePreSaleStatusWrite],
+    [togglePreSaleStatusWrite]
   );
 
   return [

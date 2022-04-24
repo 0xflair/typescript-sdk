@@ -1,8 +1,8 @@
-import { BytesLike, Signer } from 'ethers';
+import { loadContract, Version } from '@0xflair/contracts-registry';
 import { Provider } from '@ethersproject/providers';
-import { useContractWrite, useWaitForTransaction } from 'wagmi';
+import { BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
-import { Version, loadContract } from '@0xflair/contracts-registry';
+import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -17,15 +17,11 @@ export const usePreSaleAllowlistMerkleRootUpdater = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
   const [
-    {
-      data: responseData,
-      error: responseError,
-      loading: responseLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     setPreSaleAllowlistMerkleRootWrite,
   ] = useContractWrite(
     {
@@ -33,19 +29,14 @@ export const usePreSaleAllowlistMerkleRootUpdater = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'setPreSaleAllowlistMerkleRootPrice',
+    'setPreSaleAllowlistMerkleRootPrice'
   );
 
-  const [
-    {
-      data: receiptData,
-      error: receiptError,
-      loading: receiptLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: responseData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const setPreSaleAllowlistMerkleRoot = useCallback(
     async (newValue: BytesLike) => {
@@ -57,7 +48,7 @@ export const usePreSaleAllowlistMerkleRootUpdater = ({
 
       return { response, receipt };
     },
-    [setPreSaleAllowlistMerkleRootWrite],
+    [setPreSaleAllowlistMerkleRootWrite]
   );
 
   return [

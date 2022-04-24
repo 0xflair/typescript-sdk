@@ -20,12 +20,6 @@
   "files": [
     "dist"
   ],
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
-    ]
-  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-json": "^4.1.0",
@@ -37,7 +31,6 @@
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "@types/rimraf": "^3.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.16.0",
     "ethers": "^5.6.2",
     "flair-contracts-v1.4": "npm:@0xflair/evm-contracts@1.4.*",
     "fs-extra": "^10.0.1",

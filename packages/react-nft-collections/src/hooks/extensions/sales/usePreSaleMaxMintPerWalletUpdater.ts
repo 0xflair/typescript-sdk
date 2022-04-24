@@ -1,8 +1,8 @@
-import { BigNumberish, Signer } from 'ethers';
+import { loadContract, Version } from '@0xflair/contracts-registry';
 import { Provider } from '@ethersproject/providers';
-import { useContractWrite, useWaitForTransaction } from 'wagmi';
+import { BigNumberish, Signer } from 'ethers';
 import { useCallback } from 'react';
-import { Version, loadContract } from '@0xflair/contracts-registry';
+import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -17,15 +17,11 @@ export const usePreSaleMaxMintPerWalletUpdater = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
   const [
-    {
-      data: responseData,
-      error: responseError,
-      loading: responseLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     setPreSaleMaxMintPerWalletWrite,
   ] = useContractWrite(
     {
@@ -33,19 +29,14 @@ export const usePreSaleMaxMintPerWalletUpdater = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'setPreSaleMaxMintPerWallet',
+    'setPreSaleMaxMintPerWallet'
   );
 
-  const [
-    {
-      data: receiptData,
-      error: receiptError,
-      loading: receiptLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: responseData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const setPreSaleMaxMintPerWallet = useCallback(
     async (newValue: BigNumberish) => {
@@ -57,7 +48,7 @@ export const usePreSaleMaxMintPerWalletUpdater = ({
 
       return { response, receipt };
     },
-    [setPreSaleMaxMintPerWalletWrite],
+    [setPreSaleMaxMintPerWalletWrite]
   );
 
   return [

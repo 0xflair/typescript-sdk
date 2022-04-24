@@ -1,7 +1,7 @@
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { BigNumber, Signer } from 'ethers';
 import { useContractRead } from 'wagmi';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -20,7 +20,7 @@ export const useTotalSupply = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721AutoIdMinterExtension',
-    version,
+    version
   );
 
   const [{ data, error, loading }, totalSupplyRead] = useContractRead(
@@ -33,7 +33,7 @@ export const useTotalSupply = ({
     {
       skip,
       watch,
-    },
+    }
   );
 
   return [

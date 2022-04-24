@@ -1,7 +1,7 @@
-import { Version } from "@0xflair/contracts-registry";
+import { Version } from '@0xflair/contracts-registry';
 
 export enum NftCollectionPreset {
-  ERC721FullFeaturedCollection = "ERC721FullFeaturedCollection",
+  ERC721FullFeaturedCollection = 'ERC721FullFeaturedCollection',
 }
 
 export type NftCollection<
@@ -46,7 +46,7 @@ export type NftTokenAttribute = {
 };
 
 export type NftAttributeDisplayType =
-  | "number"
-  | "boost_percentage"
-  | "boost_number"
-  | "date";
+  | 'number'
+  | 'boost_percentage'
+  | 'boost_number'
+  | 'date';

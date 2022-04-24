@@ -1,6 +1,6 @@
-import { BigNumberish, Signer } from 'ethers';
 import { loadContract, Version } from '@0xflair/contracts-registry';
 import { useContractDeployer } from '@0xflair/react-contracts';
+import { BigNumberish, Signer } from 'ethers';
 
 export type ERC721FullFeaturedContractDeployerConfig = {
   version?: Version;
@@ -16,7 +16,7 @@ export type ERC721FullFeaturedContractArguments = [
   preSalePrice: BigNumberish,
   preSaleMaxPerWallet: BigNumberish,
   publicSalePrice: BigNumberish,
-  maxMintPerTx: BigNumberish,
+  maxMintPerTx: BigNumberish
 ];
 
 export const useERC721FullFeaturedContractDeployer = <Contract = any>({
@@ -25,7 +25,7 @@ export const useERC721FullFeaturedContractDeployer = <Contract = any>({
 }: ERC721FullFeaturedContractDeployerConfig) => {
   const contract = loadContract(
     'collections/ERC721/presets/ERC721FullFeaturedCollection',
-    version,
+    version
   );
   return useContractDeployer<ERC721FullFeaturedContractArguments>({
     contractInterface: contract.artifact.abi,

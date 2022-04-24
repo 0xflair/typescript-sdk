@@ -1,6 +1,7 @@
-import { Environment, useAxiosPost } from "@0xflair/react-common";
-import { FLAIR_ADDRESS_LISTS_BACKEND } from "../constants";
-import { AddressList } from "../types";
+import { Environment, useAxiosPost } from '@0xflair/react-common';
+
+import { FLAIR_ADDRESS_LISTS_BACKEND } from '../constants';
+import { AddressList } from '../types';
 
 type UpdaterConfig = {
   loginJwt?: string;
@@ -9,10 +10,10 @@ type UpdaterConfig = {
 };
 
 export function useAddressListCreator<
-  TCollectionConfig extends Record<string, any>,
+  TCollectionConfig extends Record<string, any>
 >(
   addressList: Partial<AddressList<TCollectionConfig>>,
-  { loginJwt, skip = false, env = Environment.PROD }: UpdaterConfig,
+  { loginJwt, skip = false, env = Environment.PROD }: UpdaterConfig
 ) {
   const [{ data, loading, error }, sendRequest] = useAxiosPost<
     AddressList<TCollectionConfig>

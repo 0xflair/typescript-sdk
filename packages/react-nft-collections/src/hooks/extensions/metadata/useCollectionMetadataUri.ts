@@ -1,7 +1,7 @@
+import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { Signer } from 'ethers';
 import { useContractRead } from 'wagmi';
-import { Provider } from '@ethersproject/providers';
-import { Version, loadContract } from '@0xflair/contracts-registry';
 
 type Config = {
   contractAddress?: string;
@@ -20,11 +20,14 @@ export const useCollectionMetadataUri = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721CollectionMetadataExtension',
-    version,
+    version
   );
 
   const readyToRead = Boolean(
-    !skip && contractAddress && signerOrProvider && ('call' in signerOrProvider || 'provider' in signerOrProvider),
+    !skip &&
+      contractAddress &&
+      signerOrProvider &&
+      ('call' in signerOrProvider || 'provider' in signerOrProvider)
   );
 
   const [{ data, error, loading }, contractURIRead] = useContractRead(
@@ -37,7 +40,7 @@ export const useCollectionMetadataUri = ({
     {
       skip: !readyToRead,
       watch,
-    },
+    }
   );
 
   return [

@@ -1,12 +1,11 @@
 import { Version } from '@0xflair/contracts-registry';
-import { Environment } from '@0xflair/react-common';
-import { useAddressOfSigner } from '@0xflair/react-common';
+import { Environment, useAddressOfSigner } from '@0xflair/react-common';
+import { Provider } from '@ethersproject/providers';
 import { BigNumberish, BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
 
 import { useOwnerMinter } from './useOwnerMinter';
 import { useRoleBasedMinter } from './useRoleBasedMinter';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   env?: Environment;
@@ -44,12 +43,9 @@ export const useAdminMinter = ({
   //     address: minterAddress,
   //     role: keccak256(toUtf8Bytes('MINTER_ROLE')),
   //   });
-
   //   const isOwner = ownerData?.toString().toLowerCase() ===
   //   minterAddress?.toString().toLowerCase();
   //   const hasMinterRole = hasRoleData?.toString() === 'true';
-    
-
   // const [
   //   {
   //     data: mintByOwnerData,
@@ -63,7 +59,6 @@ export const useAdminMinter = ({
   //   toAddress,
   //   mintCount,
   // });
-
   // const [
   //   {
   //     data: mintByRoleData,
@@ -77,12 +72,10 @@ export const useAdminMinter = ({
   //   toAddress,
   //   mintCount,
   // });
-
   // const possible =
   //   mintModesInfo?.ByOwner?.possible || mintModesInfo?.ByRole?.possible;
   // const reason =
   //   mintModesInfo?.ByOwner?.reason || mintModesInfo?.ByRole?.reason;
-
   // const mintAsAdmin = useCallback(
   //   (args?: { toAddress?: BytesLike; mintCount?: BigNumberish }) => {
   //     if (mintModesInfo?.ByOwner?.possible) {
@@ -102,7 +95,6 @@ export const useAdminMinter = ({
   //     mintModesInfo?.ByRole?.possible,
   //   ],
   // );
-
   // return [
   //   {
   //     data: { possible, reason, mintData: mintByOwnerData || mintByRoleData },

@@ -1,5 +1,5 @@
-import { Signer } from "ethers";
-import { useMemo, useState } from "react";
+import { Signer } from 'ethers';
+import { useMemo, useState } from 'react';
 
 export const useAddressOfSigner = (signer?: Signer): string | undefined => {
   const [address, setAddress] = useState<string>();

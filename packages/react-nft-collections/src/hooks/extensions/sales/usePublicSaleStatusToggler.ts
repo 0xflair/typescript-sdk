@@ -1,8 +1,8 @@
-import { Signer } from "ethers";
-import { Provider } from "@ethersproject/providers";
-import { useContractWrite, useWaitForTransaction } from "wagmi";
-import { useCallback } from "react";
-import { Version, loadContract } from "@0xflair/contracts-registry";
+import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
+import { Signer } from 'ethers';
+import { useCallback } from 'react';
+import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -16,7 +16,7 @@ export const usePublicSaleStatusToggler = ({
   signerOrProvider,
 }: Config) => {
   const contract = loadContract(
-    "collections/ERC721/extensions/ERC721PublicSaleExtension",
+    'collections/ERC721/extensions/ERC721PublicSaleExtension',
     version
   );
 
@@ -29,7 +29,7 @@ export const usePublicSaleStatusToggler = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    "togglePublicSaleStatus"
+    'togglePublicSaleStatus'
   );
 
   const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =

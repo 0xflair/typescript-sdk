@@ -1,7 +1,7 @@
-import { Version, loadContract } from '@0xflair/contracts-registry';
+import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { Signer } from 'ethers';
 import { useContractRead } from 'wagmi';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -20,21 +20,22 @@ export const usePreSaleAllowlistMerkleRoot = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
-  const [{ data, error, loading }, preSaleAllowlistMerkleRootRead] = useContractRead(
-    {
-      addressOrName: contractAddress as string,
-      contractInterface: contract.artifact.abi,
-      signerOrProvider,
-    },
-    'preSaleAllowlistMerkleRoot',
-    {
-      skip,
-      watch,
-    },
-  );
+  const [{ data, error, loading }, preSaleAllowlistMerkleRootRead] =
+    useContractRead(
+      {
+        addressOrName: contractAddress as string,
+        contractInterface: contract.artifact.abi,
+        signerOrProvider,
+      },
+      'preSaleAllowlistMerkleRoot',
+      {
+        skip,
+        watch,
+      }
+    );
 
   return [
     {

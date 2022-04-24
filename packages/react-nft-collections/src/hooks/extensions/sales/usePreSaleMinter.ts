@@ -1,10 +1,10 @@
+import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { BigNumber, BigNumberish, BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
 import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 import { usePreSalePrice } from './usePreSalePrice';
-import { Provider } from '@ethersproject/providers';
-import { loadContract, Version } from '@0xflair/contracts-registry';
 
 type Config = {
   contractAddress?: string;
@@ -23,7 +23,7 @@ export const usePreSaleMinter = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
   const [
@@ -51,7 +51,7 @@ export const usePreSaleMinter = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'mintPreSale',
+    'mintPreSale'
   );
 
   const [
@@ -77,7 +77,7 @@ export const usePreSaleMinter = ({
         ],
         overrides: {
           value: BigNumber.from(preSalePrice).mul(
-            BigNumber.from(args?.mintCount || mintCount),
+            BigNumber.from(args?.mintCount || mintCount)
           ),
         },
       });
@@ -86,7 +86,7 @@ export const usePreSaleMinter = ({
 
       return { response, receipt };
     },
-    [mintPreSaleWrite, preSalePrice, mintCount, allowlistProof],
+    [mintPreSaleWrite, preSalePrice, mintCount, allowlistProof]
   );
 
   return [

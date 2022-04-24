@@ -1,8 +1,8 @@
-import { BigNumberish, Signer } from 'ethers';
+import { loadContract, Version } from '@0xflair/contracts-registry';
 import { Provider } from '@ethersproject/providers';
-import { useContractWrite, useWaitForTransaction } from 'wagmi';
+import { BigNumberish, Signer } from 'ethers';
 import { useCallback } from 'react';
-import { Version, loadContract } from '@0xflair/contracts-registry';
+import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 type Config = {
   contractAddress?: string;
@@ -17,15 +17,11 @@ export const usePublicSalePriceUpdater = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PublicSaleExtension',
-    version,
+    version
   );
 
   const [
-    {
-      data: responseData,
-      error: responseError,
-      loading: responseLoading,
-    },
+    { data: responseData, error: responseError, loading: responseLoading },
     setPublicSalePriceWrite,
   ] = useContractWrite(
     {
@@ -33,19 +29,14 @@ export const usePublicSalePriceUpdater = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'setPublicSalePrice',
+    'setPublicSalePrice'
   );
 
-  const [
-    {
-      data: receiptData,
-      error: receiptError,
-      loading: receiptLoading,
-    },
-  ] = useWaitForTransaction({
-    hash: responseData?.hash,
-    confirmations: 2,
-  });
+  const [{ data: receiptData, error: receiptError, loading: receiptLoading }] =
+    useWaitForTransaction({
+      hash: responseData?.hash,
+      confirmations: 2,
+    });
 
   const setPublicSalePrice = useCallback(
     async (newPrice: BigNumberish) => {
@@ -57,7 +48,7 @@ export const usePublicSalePriceUpdater = ({
 
       return { response, receipt };
     },
-    [setPublicSalePriceWrite],
+    [setPublicSalePriceWrite]
   );
 
   return [

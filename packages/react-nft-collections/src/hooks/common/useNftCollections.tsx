@@ -1,5 +1,6 @@
 import { Environment, useAxiosGet } from '@0xflair/react-common';
 import { useLoginJwt } from '@0xflair/react-wallet';
+
 import { FLAIR_NFT_COLLECTIONS_BACKEND } from '../../constants';
 import { NftCollection } from '../../types';
 

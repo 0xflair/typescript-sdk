@@ -26,11 +26,11 @@ export const usePreSaleAllowlistChecker = ({
 
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
   const readyToRead = Boolean(
-    !skip && minterAddress && contractAddress && chainId,
+    !skip && minterAddress && contractAddress && chainId
   );
 
   const [
@@ -60,7 +60,7 @@ export const usePreSaleAllowlistChecker = ({
       args: [minterAddress, proofData],
       skip: !readyToRead || !proofData,
       watch: false,
-    },
+    }
   );
 
   const onPreSaleAllowList = useCallback(
@@ -88,7 +88,7 @@ export const usePreSaleAllowlistChecker = ({
           });
       });
     },
-    [minterAddress, fetchProof, onPreSaleAllowListRead],
+    [minterAddress, fetchProof, onPreSaleAllowListRead]
   );
 
   return [

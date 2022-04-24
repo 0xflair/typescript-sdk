@@ -1,4 +1,5 @@
 import { Environment, useAxiosGet } from '@0xflair/react-common';
+import axios from 'axios';
 
 import { FLAIR_NFT_COLLECTIONS_BACKEND } from '../../constants';
 import { NftCollection } from '../../types';
@@ -12,7 +13,7 @@ type Config = {
 };
 
 export function useNftCollection<
-  TCollectionConfig extends Record<string, any>,
+  TCollectionConfig extends Record<string, any>
 >({
   collectionId,
   chainId,

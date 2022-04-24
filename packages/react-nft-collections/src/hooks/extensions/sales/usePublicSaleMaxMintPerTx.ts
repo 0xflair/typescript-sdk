@@ -1,7 +1,7 @@
+import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
 import { Signer } from 'ethers';
 import { useContractRead } from 'wagmi';
-import { Version, loadContract } from '@0xflair/contracts-registry';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -20,21 +20,22 @@ export const usePublicSaleMaxMintPerTx = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PreSaleExtension',
-    version,
+    version
   );
 
-  const [{ data, error, loading }, publicSaleMaxMintPerTxRead] = useContractRead(
-    {
-      addressOrName: contractAddress as string,
-      contractInterface: contract.artifact.abi,
-      signerOrProvider,
-    },
-    'publicSaleMaxMintPerTx',
-    {
-      skip,
-      watch,
-    },
-  );
+  const [{ data, error, loading }, publicSaleMaxMintPerTxRead] =
+    useContractRead(
+      {
+        addressOrName: contractAddress as string,
+        contractInterface: contract.artifact.abi,
+        signerOrProvider,
+      },
+      'publicSaleMaxMintPerTx',
+      {
+        skip,
+        watch,
+      }
+    );
 
   return [
     {

@@ -1,10 +1,10 @@
-import { BigNumber, BigNumberish, Signer } from 'ethers';
 import { loadContract, Version } from '@0xflair/contracts-registry';
+import { Provider } from '@ethersproject/providers';
+import { BigNumber, BigNumberish, Signer } from 'ethers';
 import { useCallback } from 'react';
 import { useContractWrite, useWaitForTransaction } from 'wagmi';
 
 import { usePublicSalePrice } from './usePublicSalePrice';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   contractAddress?: string;
@@ -21,7 +21,7 @@ export const usePublicSaleMinter = ({
 }: Config) => {
   const contract = loadContract(
     'collections/ERC721/extensions/ERC721PublicSaleExtension',
-    version,
+    version
   );
 
   const [
@@ -49,7 +49,7 @@ export const usePublicSaleMinter = ({
       contractInterface: contract.artifact.abi,
       signerOrProvider,
     },
-    'mintPublicSale',
+    'mintPublicSale'
   );
 
   const [
@@ -69,7 +69,7 @@ export const usePublicSaleMinter = ({
         args: [args?.mintCount || mintCount],
         overrides: {
           value: BigNumber.from(publicSalePrice).mul(
-            BigNumber.from(args?.mintCount || mintCount),
+            BigNumber.from(args?.mintCount || mintCount)
           ),
         },
       });
@@ -78,7 +78,7 @@ export const usePublicSaleMinter = ({
 
       return { response, receipt };
     },
-    [mintPublicSaleWrite, publicSalePrice, mintCount],
+    [mintPublicSaleWrite, publicSalePrice, mintCount]
   );
 
   return [

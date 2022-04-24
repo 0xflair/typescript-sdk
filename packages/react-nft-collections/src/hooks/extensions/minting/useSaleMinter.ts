@@ -1,12 +1,11 @@
+import { Version } from '@0xflair/contracts-registry';
+import { Environment } from '@0xflair/react-common';
+import { Provider } from '@ethersproject/providers';
 import { BigNumberish, BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
 
 import { usePreSaleMinter } from '../sales/usePreSaleMinter';
 import { usePublicSaleMinter } from '../sales/usePublicSaleMinter';
-
-import { Environment } from '@0xflair/react-common';
-import { Version } from '@0xflair/contracts-registry';
-import { Provider } from '@ethersproject/providers';
 
 type Config = {
   env?: Environment;
@@ -50,7 +49,6 @@ export const useSaleMinter = ({
   //   version,
   //   minterAddress,
   // });
-
   // const [
   //   {
   //     data: preSaleMintData,
@@ -65,7 +63,6 @@ export const useSaleMinter = ({
   //   mintCount,
   //   allowlistProof,
   // });
-
   // const [
   //   {
   //     data: publicSaleMintData,
@@ -79,12 +76,10 @@ export const useSaleMinter = ({
   //   signerOrProvider,
   //   mintCount,
   // });
-
   // const possible =
   //   mintModesInfo?.PreSale?.possible || mintModesInfo?.PublicSale?.possible;
   // const reason =
   //   mintModesInfo?.PreSale?.reason || mintModesInfo?.PublicSale?.reason;
-
   // const mint = useCallback(
   //   (args?: { mintCount?: BigNumberish; allowlistProof?: BytesLike[] }) => {
   //     if (mintModesInfo?.PreSale?.possible) {
@@ -107,7 +102,6 @@ export const useSaleMinter = ({
   //     allowlistProof,
   //   ],
   // );
-
   // return [
   //   {
   //     data: {
