@@ -1,2 +1,1 @@
-export * from './hooks/common';
-export * from './hooks/collections';
+export * from './hooks';
