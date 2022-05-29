@@ -1,4 +1,4 @@
-# Flair SDK: `react-streaming-pools`
+# Flair SDK: `react-token-streams`
 
 Ready-made React components and hooks for working with Flair's NFT-based streaming pools in a web3 dApp. This SDK also supports interacting with Flair smart contracts and extensions.
 
@@ -9,7 +9,7 @@ Ready-made React components and hooks for working with Flair's NFT-based streami
 1. Install the package:
 
    ```sh
-   npm install @0xflair/react-streaming-pools
+   npm install @0xflair/react-token-streams
    ```
 
 2. Install peer dependencies if not installed yet:
@@ -43,4 +43,4 @@ Ready-made React components and hooks for working with Flair's NFT-based streami
 
 ## Documentation
 
-Visit [docs.flair.finance/sdk/streaming-pools](https://docs.flair.finance/sdk/streaming-pools) for the full SDK documentation.
+Visit [docs.flair.finance/sdk/token-streams](https://docs.flair.finance/sdk/token-streams) for the full SDK documentation.
