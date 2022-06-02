@@ -1,3 +1,5 @@
+import 'ethers';
+
 import axios from 'axios';
 
 export * from './constants';

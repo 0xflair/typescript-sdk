@@ -20,7 +20,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-, "src/access/.ts"  ]
+  "include": ["src"]
 }
