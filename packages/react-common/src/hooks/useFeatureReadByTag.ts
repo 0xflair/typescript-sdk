@@ -14,7 +14,7 @@ export type ContractReadByFeatureConfig<ArgsType = any> =
     args?: ArgsType;
   };
 
-export const useContractReadByFeature = <ResultType = any, ArgsType = any>({
+export const useFeatureReadByTag = <ResultType = any, ArgsType = any>({
   env,
   chainId,
   contractAddress,

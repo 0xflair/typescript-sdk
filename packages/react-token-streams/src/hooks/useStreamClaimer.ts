@@ -1,7 +1,7 @@
 import {
   Environment,
   useChainId,
-  useContractWriteByFeature,
+  useFeatureWriteByTag,
 } from '@0xflair/react-common';
 import { BytesLike } from '@ethersproject/bytes';
 import { Provider } from '@ethersproject/providers';
@@ -80,7 +80,7 @@ export const useStreamClaimer = ({
   const owner = owner_ || account?.address;
   const feature = selectClaimFeature({ ticketTokenIds, claimToken, owner });
 
-  const result = useContractWriteByFeature({
+  const result = useFeatureWriteByTag({
     env,
     chainId,
     contractAddress,

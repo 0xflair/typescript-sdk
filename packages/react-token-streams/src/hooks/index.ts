@@ -11,3 +11,7 @@ export * from './useStreamTicketToken';
 export * from './useStreamTotalClaimed';
 export * from './useStreamTotalShares';
 export * from './useStreamTotalSupply';
+export * from './useTokenStream';
+export * from './useTokenStreamCreator';
+export * from './useTokenStreams';
+export * from './useTokenStreamUpdater';

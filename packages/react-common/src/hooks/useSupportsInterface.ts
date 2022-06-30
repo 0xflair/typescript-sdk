@@ -12,7 +12,7 @@ type Config = PredefinedReadContractConfig<[BigNumberish]> & {
   extensionFqn?: ContractFqn;
 };
 
-export const useExtensionChecker = ({
+export const useSupportsInterface = ({
   contractAddress,
   contractVersion,
   extensionFqn,

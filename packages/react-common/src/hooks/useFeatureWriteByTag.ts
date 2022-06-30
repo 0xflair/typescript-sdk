@@ -17,9 +17,7 @@ export type ContractWriteByFeatureConfig<ArgsType extends Record<string, any>> =
     args?: ArgsType;
   };
 
-export const useContractWriteByFeature = <
-  ArgsType extends Record<string, any>
->({
+export const useFeatureWriteByTag = <ArgsType extends Record<string, any>>({
   env,
   chainId,
   contractAddress,

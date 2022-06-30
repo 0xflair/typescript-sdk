@@ -50,8 +50,6 @@ export const useFeatureWrite = <ArgsType extends Record<string, any>>({
         inputArgs || args
       );
 
-      console.log('FAAAAL === ', feature?.signature, inputArgs, args, call);
-
       return result.writeAndWait(call.args, overrides);
     },
     [args, feature?.signature, result]

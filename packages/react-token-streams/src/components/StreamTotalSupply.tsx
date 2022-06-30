@@ -1,5 +1,5 @@
 import { CryptoUnits, CryptoValue } from '@0xflair/react-coingecko';
-import { useChainId, useChainInfo } from 'flair-sdk';
+import { useChainInfo } from '@0xflair/react-common';
 
 import { useStreamClaimingContext } from '../providers/StreamClaimingProvider';
 
