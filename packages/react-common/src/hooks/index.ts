@@ -5,8 +5,14 @@ export * from './useAddressOfSigner';
 export * from './useContractAbi';
 export * from './useContractDeployer';
 export * from './useContractWriteAndWait';
+export * from './useContractWriteByFeature';
+export * from './useFeatureWrite';
 export * from './useFlairContractDeployer';
 export * from './useContractRead';
+export * from './useContractReadByFeature';
+export * from './useFeatureRead';
+export * from './useHasAnyOfFeatures';
+export * from './useNormalizedFunctionCall';
 export * from './useExtensionChecker';
 
 // web2
