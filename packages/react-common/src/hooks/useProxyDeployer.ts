@@ -1,7 +1,6 @@
 import '@ethersproject/abstract-provider';
 
 import { ContractDefinition } from '@0xflair/contracts-registry';
-import { FlairFactory } from '@0xflair/evm-contracts';
 import { Contract, Signer, utils } from 'ethers';
 import * as React from 'react';
 

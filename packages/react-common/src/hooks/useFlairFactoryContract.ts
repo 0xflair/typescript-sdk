@@ -5,16 +5,13 @@ import { FlairFactory__factory } from '@0xflair/evm-contracts';
 import { useMemo } from 'react';
 import { useSigner } from 'wagmi';
 
-import { useCancel } from './useCancel';
 import { useChainId } from './useChainId';
 
-export type ProxyDeployerConfig = {
+type Config = {
   chainId?: number;
 };
 
-export const useFlairFactoryContract = ({
-  chainId,
-}: Partial<ProxyDeployerConfig>) => {
+export const useFlairFactoryContract = ({ chainId }: Config) => {
   const resolvedChainId = useChainId(chainId);
   const { data: signer } = useSigner();
 
