@@ -1,4 +1,5 @@
 import { Environment } from '@0xflair/common';
+import { loadContract } from '@0xflair/contracts-registry';
 import {
   PredefinedReadContractConfig,
   useContractRead,
@@ -6,7 +7,6 @@ import {
 } from '@0xflair/react-common';
 import { readContract } from '@wagmi/core';
 import { BigNumberish } from 'ethers';
-import { loadContract } from 'flair-sdk';
 import { useCallback, useMemo, useState } from 'react';
 
 import { Tier } from '../types';

@@ -162,7 +162,7 @@ export const useSaleMinter = ({
           eligibleAmount:
             tierId?.toString() === '0'
               ? Number(simpleSaleData.preSaleMaxMintPerWallet?.toString())
-              : Number(simpleSaleData.publicSaleMaxMintPerTx?.toString()), // TODO get this from pre-sale/public-sale max
+              : Number(simpleSaleData.publicSaleMaxMintPerTx?.toString()),
         },
     error: supportsTieredSales
       ? supportsTieredSalesError ||

@@ -1,4 +1,4 @@
-export * from '../pre-sale/usePreSaleAllowlistChecker';
+export * from './usePreSaleAllowlistChecker';
 export * from './usePreSaleAllowlistMerkleRoot';
 export * from './usePreSaleAllowlistMerkleRootUpdater';
 export * from './usePreSaleMaxMintPerWallet';

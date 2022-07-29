@@ -1,8 +1,7 @@
 import { ContractVersion } from '@0xflair/contracts-registry';
+import { useAddressListMerkleProof } from '@0xflair/react-address-lists';
 import { Environment, useContractRead } from '@0xflair/react-common';
 import { BigNumberish, BytesLike } from 'ethers';
-
-import { useAddressListMerkleProof } from '../../../../../../../address-lists/hooks/useAddressListMerkleProof';
 
 type Config = {
   env?: Environment;

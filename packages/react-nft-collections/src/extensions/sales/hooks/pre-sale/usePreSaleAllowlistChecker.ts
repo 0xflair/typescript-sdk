@@ -1,10 +1,10 @@
 import { ContractVersion } from '@0xflair/contracts-registry';
+import { useAddressListMerkleProof } from '@0xflair/react-address-lists';
 import { Environment, useContractRead } from '@0xflair/react-common';
 import { BigNumberish, BytesLike } from 'ethers';
 import { useCallback } from 'react';
 import versioning from 'versioning';
 
-import { useAddressListMerkleProof } from '../../../../../../../address-lists/hooks/useAddressListMerkleProof';
 import { usePreSaleAllowlistMerkleRoot } from './usePreSaleAllowlistMerkleRoot';
 
 type Config = {
