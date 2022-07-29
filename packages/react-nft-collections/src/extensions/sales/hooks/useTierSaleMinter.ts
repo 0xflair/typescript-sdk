@@ -9,9 +9,9 @@ import { Provider } from '@ethersproject/providers';
 import { BigNumber, BigNumberish, BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
 
-import { useTierSaleAllowlistChecker } from './tiering/useTierSaleAllowlistChecker';
-import { useTierSaleEligibleAmount } from './tiering/useTierSaleEligibleAmount';
-import { useTierSaleInformation } from './tiering/useTierSaleInformation';
+import { useTierSaleAllowlistChecker } from './useTierSaleAllowlistChecker';
+import { useTierSaleEligibleAmount } from './useTierSaleEligibleAmount';
+import { useTierSaleInformation } from './useTierSaleInformation';
 
 type ArgsType = [
   tierId: BigNumberish,

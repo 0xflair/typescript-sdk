@@ -4,7 +4,7 @@ import {
 } from '@0xflair/react-common';
 import { BigNumberish } from 'ethers';
 
-import { Tier } from '../../types';
+import { Tier } from '../types';
 
 type ArgsType = [tierId: BigNumberish];
 

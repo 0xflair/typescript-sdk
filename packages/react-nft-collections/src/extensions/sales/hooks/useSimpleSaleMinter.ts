@@ -5,13 +5,13 @@ import { BigNumber, BigNumberish, BytesLike, Signer } from 'ethers';
 import { useCallback } from 'react';
 import { useAccount } from 'wagmi';
 
-import { usePreSaleMaxMintPerWallet } from './pre-sale';
-import { usePreSaleAllowlistChecker } from './pre-sale/usePreSaleAllowlistChecker';
-import { usePreSaleMinter } from './pre-sale/usePreSaleMinter';
-import { usePreSaleStatus } from './pre-sale/usePreSaleStatus';
-import { usePublicSaleMaxMintPerTx } from './public-sale';
-import { usePublicSaleMinter } from './public-sale/usePublicSaleMinter';
-import { usePublicSaleStatus } from './public-sale/usePublicSaleStatus';
+import { usePreSaleAllowlistChecker } from './usePreSaleAllowlistChecker';
+import { usePreSaleMaxMintPerWallet } from './usePreSaleMaxMintPerWallet';
+import { usePreSaleMinter } from './usePreSaleMinter';
+import { usePreSaleStatus } from './usePreSaleStatus';
+import { usePublicSaleMaxMintPerTx } from './usePublicSaleMaxMintPerTx';
+import { usePublicSaleMinter } from './usePublicSaleMinter';
+import { usePublicSaleStatus } from './usePublicSaleStatus';
 
 type Config = {
   env?: Environment;
@@ -133,7 +133,7 @@ export const useSimpleSaleMinter = ({
         if (args?.mintCount) {
           overrides = {
             value: BigNumber.from(preSaleMintData.preSalePrice).mul(
-              BigNumber.from(args?.mintCount)
+              BigNumber.from(args?.mintCount),
             ),
           };
         }
@@ -143,13 +143,13 @@ export const useSimpleSaleMinter = ({
             (args?.mintCount || mintCount) as BigNumberish,
             (args?.allowlistProof || allowlistProof) as BytesLike[],
           ],
-          overrides
+          overrides,
         );
       } else if (publicSaleStatus) {
         if (args?.mintCount) {
           overrides = {
             value: BigNumber.from(publicSaleMintData.publicSalePrice).mul(
-              BigNumber.from(args?.mintCount)
+              BigNumber.from(args?.mintCount),
             ),
           };
         }
@@ -159,7 +159,7 @@ export const useSimpleSaleMinter = ({
             account?.address as BytesLike,
             (args?.mintCount || mintCount) as BigNumberish,
           ],
-          overrides
+          overrides,
         );
       }
     },
@@ -174,7 +174,7 @@ export const useSimpleSaleMinter = ({
       publicSaleMintData.publicSalePrice,
       publicSaleMintWrite,
       publicSaleStatus,
-    ]
+    ],
   );
 
   return {
