@@ -6,7 +6,7 @@ import {
 type ArgsType = {};
 
 export const useTokenMetadataUriFreezer = (
-  config: FeatureWriteByTagConfig<ArgsType>
+  config: FeatureWriteByTagConfig<ArgsType>,
 ) => {
   return useFeatureWriteByTag<ArgsType>({
     tag: 'freeze_token_metadata_uri',

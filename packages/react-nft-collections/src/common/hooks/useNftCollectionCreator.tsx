@@ -12,7 +12,7 @@ type UpdaterConfig = {
 
 export function useNftCollectionCreator<TConfig extends Record<string, any>>(
   collection: Partial<NftCollection<TConfig>>,
-  { enabled = true, env = Environment.PROD }: UpdaterConfig
+  { enabled = true, env = Environment.PROD }: UpdaterConfig,
 ) {
   const loginJwt = useLoginJwt();
   const headers = useMemo(() => {

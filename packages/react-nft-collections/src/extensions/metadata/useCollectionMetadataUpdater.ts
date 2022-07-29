@@ -84,7 +84,7 @@ export const useCollectionMetadataUpdater = ({
 
       return { collectionMetadataUri, collectionImageUri };
     },
-    [metadataUpdates, collectionImageUpload, collectionMetadataUpload]
+    [metadataUpdates, collectionImageUpload, collectionMetadataUpload],
   );
 
   const updateCollectionMetadataUri = useCallback(
@@ -95,7 +95,7 @@ export const useCollectionMetadataUpdater = ({
         (args.collectionMetadataUri || collectionMetadataUploaderUri) as string,
       ]);
     },
-    [collectionMetadataUploaderUri, setCollectionMetadataUri]
+    [collectionMetadataUploaderUri, setCollectionMetadataUri],
   );
 
   const uploadAndUpdateCollectionMetadata = useCallback(async () => {
@@ -108,7 +108,7 @@ export const useCollectionMetadataUpdater = ({
       });
     } else {
       console.warn(
-        `Could not set collectionMetadataUri (${collectionMetadataUri}) because contractAddress is not provided (${contractAddress})`
+        `Could not set collectionMetadataUri (${collectionMetadataUri}) because contractAddress is not provided (${contractAddress})`,
       );
     }
 

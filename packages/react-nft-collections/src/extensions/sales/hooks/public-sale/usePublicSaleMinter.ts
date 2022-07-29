@@ -3,52 +3,55 @@ import { useContractAbi, useContractWriteAndWait } from '@0xflair/react-common';
 import { Provider } from '@ethersproject/providers';
 import { BigNumber, BigNumberish, BytesLike, Signer } from 'ethers';
 
-import { usePreSalePrice } from './usePreSalePrice';
+import { usePublicSalePrice } from './usePublicSalePrice';
 
 type Config = {
   chainId?: number;
   contractVersion?: ContractVersion;
   contractAddress?: string;
   signerOrProvider?: Signer | Provider | null;
+  enabled?: boolean;
+  toAddress?: string;
   mintCount?: BigNumberish;
-  allowlistProof?: BytesLike[];
 };
 
-type ArgsType = [mintCount: BigNumberish, allowlistProof: BytesLike[]];
+type ArgsType = [toAddress: BytesLike, mintCount: BigNumberish];
 
-export const usePreSaleMinter = ({
+export const usePublicSaleMinter = ({
   chainId,
   contractVersion,
   contractAddress,
   signerOrProvider,
+  enabled,
+  toAddress,
   mintCount,
-  allowlistProof,
 }: Config) => {
   const {
-    data: preSalePrice,
-    isLoading,
+    data: publicSalePrice,
     error,
-  } = usePreSalePrice({
+    isLoading,
+  } = usePublicSalePrice({
     chainId,
     contractVersion,
     contractAddress,
+    enabled,
   });
 
   const contractInterface = useContractAbi({
     contractVersion,
-    contractFqn: 'collections/ERC721/extensions/ERC721PreSaleExtension',
+    contractFqn: 'collections/ERC721/extensions/ERC721PublicSaleExtension',
   });
 
   const result = useContractWriteAndWait<ArgsType>({
     contractInterface,
-    functionName: 'mintPreSale',
+    functionName: 'mintPublicSale',
     contractAddress,
     signerOrProvider,
-    args: [mintCount, allowlistProof] as ArgsType,
+    args: [toAddress, mintCount] as ArgsType,
     overrides: {
       value:
-        typeof preSalePrice !== 'undefined' && mintCount
-          ? BigNumber.from(preSalePrice).mul(BigNumber.from(mintCount))
+        typeof publicSalePrice !== 'undefined' && mintCount
+          ? BigNumber.from(publicSalePrice).mul(BigNumber.from(mintCount))
           : undefined,
     },
   });
@@ -59,7 +62,7 @@ export const usePreSaleMinter = ({
     error: result.error || error,
     data: {
       ...result.data,
-      preSalePrice,
+      publicSalePrice,
     },
   };
 };

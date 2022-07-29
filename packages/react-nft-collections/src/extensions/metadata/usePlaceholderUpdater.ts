@@ -52,7 +52,7 @@ export const usePlaceholderUpdater = ({
 
     if (!metadataUri) {
       console.warn(
-        `Could not upload placeholder metadata and get metadataUri (${metadataUri})`
+        `Could not upload placeholder metadata and get metadataUri (${metadataUri})`,
       );
       return;
     }
