@@ -22,6 +22,25 @@ const newChains = [
     },
   },
   {
+    id: 65,
+    name: 'OKC Testnet',
+    nativeCurrency: { name: 'OKT', symbol: 'OKT', decimals: 18 },
+    rpcUrls: {
+      default: 'https://exchaintestrpc.okex.org',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Etherscan',
+        url: 'https://www.oklink.com/okc-test/',
+      },
+      default: {
+        name: 'default',
+        url: 'https://www.oklink.com/okc-test/',
+      },
+    },
+    testnet: true,
+  },
+  {
     id: 43_114,
     name: 'Avalanche',
     nativeCurrency: {
