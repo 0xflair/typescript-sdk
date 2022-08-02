@@ -21,6 +21,51 @@ const newChains = [
       },
     },
   },
+  {
+    id: 43_114,
+    name: 'Avalanche',
+    nativeCurrency: {
+      name: 'AVAX',
+      symbol: 'AVAX',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://api.avax.network/ext/bc/C/rpc',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Etherscan',
+        url: 'https://snowtrace.io/',
+      },
+      default: {
+        name: 'default',
+        url: 'https://snowtrace.io/',
+      },
+    },
+  },
+  {
+    id: 43_113,
+    name: 'Avalanche FUJI',
+    nativeCurrency: {
+      name: 'AVAX',
+      symbol: 'AVAX',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://api.avax-test.network/ext/bc/C/rpc',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Etherscan',
+        url: 'https://testnet.snowtrace.io/',
+      },
+      default: {
+        name: 'default',
+        url: 'https://testnet.snowtrace.io/',
+      },
+    },
+    testnet: true,
+  },
 ];
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
