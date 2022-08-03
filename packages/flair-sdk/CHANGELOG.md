@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.90.0 (2022-08-02)
+
+
+### Features
+
+* bump up contract registry and allow setting forwarder address on mtx ([33c7a3d](https://github.com/0xflair/typescript-sdk/commit/33c7a3d16e6fb18416418cfff2db89158000ba00))
+
+
+
+
+
+# 0.89.0 (2022-08-02)
+
+
+### Features
+
+* upgrade packages and add v1.19 contracts ([9f965c6](https://github.com/0xflair/typescript-sdk/commit/9f965c61976ad02b399fb16bde78425ae57da920))
+
+
+
+
+
 ## 0.88.8 (2022-08-01)
 
 
