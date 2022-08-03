@@ -65,7 +65,7 @@ export const NetworkSelector = (props: Props) => {
               {chain.name}{' '}
               {chain.nativeCurrency ? (
                 <small className="text-xs">
-                  (${chain.nativeCurrency.symbol})
+                  ({chain.nativeCurrency.symbol})
                 </small>
               ) : (
                 ''
@@ -120,9 +120,6 @@ export const NetworkSelector = (props: Props) => {
             >
               <Listbox.Options className="absolute z-20 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                 <div>
-                  {/* <small className="text-sm pl-3 text-gray-400 italic divide-y divide-gray-100">
-                    Mainnet
-                  </small> */}
                   {categorizedChains.mainnet.map((chain) => {
                     return <ChainView chain={chain} />;
                   })}
@@ -141,9 +138,6 @@ export const NetworkSelector = (props: Props) => {
                   </div>
                 </div>
                 <div className="">
-                  {/* <small className="text-sm pl-3 text-gray-400 italic">
-                    Testnet
-                  </small> */}
                   {categorizedChains.testnet.map((chain) => {
                     return <ChainView chain={chain} />;
                   })}
