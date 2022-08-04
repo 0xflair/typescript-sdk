@@ -85,6 +85,51 @@ const newChains = [
     },
     testnet: true,
   },
+  {
+    id: 250,
+    name: 'Fantom',
+    nativeCurrency: {
+      name: 'FTM',
+      symbol: 'FTM',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://rpc.ankr.com/fantom/',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Etherscan',
+        url: 'https://ftmscan.com/',
+      },
+      default: {
+        name: 'default',
+        url: 'https://ftmscan.com/',
+      },
+    },
+  },
+  {
+    id: 4002,
+    name: 'Fantom Testnet',
+    nativeCurrency: {
+      name: 'FTM',
+      symbol: 'FTM',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://rpc.testnet.fantom.network/',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Etherscan',
+        url: 'https://testnet.ftmscan.com/',
+      },
+      default: {
+        name: 'default',
+        url: 'https://testnet.ftmscan.com/',
+      },
+    },
+    testnet: true,
+  },
 ];
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
