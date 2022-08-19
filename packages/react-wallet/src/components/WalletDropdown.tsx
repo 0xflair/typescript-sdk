@@ -21,12 +21,14 @@ import { DisconnectButton } from './DisconnectButton';
 import { WalletComponentWrapper } from './WalletComponentWrapper';
 
 type Props = {
+  as?: keyof JSX.IntrinsicElements;
   className?: string;
   blockieSize?: number;
   blockieScale?: number;
 };
 
 export const WalletDropdown = ({
+  as,
   className,
   blockieSize = 8,
   blockieScale = 3,
@@ -65,13 +67,16 @@ export const WalletDropdown = ({
   const [, copyToClipboard] = useCopyToClipboard();
 
   return (
-    <WalletComponentWrapper className={'wallet-dropdown-wrapper'}>
+    <WalletComponentWrapper as={as} className={'wallet-dropdown-wrapper'}>
       <Menu
         as="div"
-        className={classNames(`relative inline-block`, className || '')}
+        className={classNames(
+          `wallet-dropdown-menu relative inline-block`,
+          className || '',
+        )}
       >
         <div>
-          <Menu.Button className="max-w-xs rounded-full flex gap-2 items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 p-2 lg:rounded-md lg:hover:bg-gray-50">
+          <Menu.Button className="wallet-dropdown-button max-w-xs rounded-full flex gap-2 items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 p-2 lg:rounded-md lg:hover:bg-gray-50">
             {avatar?.toString() ? (
               <img
                 className="h-8 w-8 rounded-full"
@@ -83,10 +88,10 @@ export const WalletDropdown = ({
                 seed={account?.address?.toLowerCase() || ''}
                 size={blockieSize}
                 scale={blockieScale}
-                className={'rounded-full'}
+                className={'wallet-dropdown-blockies rounded-full'}
               />
             )}{' '}
-            <span className="hidden text-gray-700 text-sm font-medium lg:block">
+            <span className="wallet-dropdown-label hidden text-gray-700 text-sm font-medium lg:block">
               <span className="sr-only">Open wallet menu</span>
               {ens?.toString() ||
                 account?.address?.slice(0, 4) +
@@ -94,13 +99,13 @@ export const WalletDropdown = ({
                   account?.address?.slice(-4)}
             </span>
             {balance?.value ? (
-              <span className="text-gray-500 truncate">
+              <span className="wallet-dropdown-balance text-gray-500 truncate">
                 {Number(balance.formatted).toFixed(4)}{' '}
                 {activeChain?.nativeCurrency?.symbol || balance.symbol}
               </span>
             ) : null}
             <ChevronDownIcon
-              className="flex-shrink-0 h-5 w-5 text-gray-400 block"
+              className="wallet-dropdown-icon flex-shrink-0 h-5 w-5 text-gray-400 block"
               aria-hidden="true"
             />
           </Menu.Button>
@@ -114,33 +119,37 @@ export const WalletDropdown = ({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="origin-top-right absolute z-10 right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="px-4 py-3">
-              <p className="text-xs capitalize text-gray-400">Wallet Address</p>
-              <div
-                className="text-sm font-medium text-gray-900 cursor-pointer"
-                onClick={(e) => {
-                  account?.address && copyToClipboard(account.address);
+          <Menu.Items className="wallet-dropdown-items origin-top-right absolute z-10 right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="wallet-dropdown-header px-4 py-3">
+              <span className="wallet-dropdown-info--address">
+                <p className="wallet-dropdown-address-label text-xs capitalize text-gray-400">
+                  Wallet Address
+                </p>
+                <p
+                  className="wallet-dropdown-address-value text-sm font-medium text-gray-900 cursor-pointer"
+                  onClick={(e) => {
+                    account?.address && copyToClipboard(account.address);
 
-                  const selection = window.getSelection();
-                  const range = document.createRange();
-                  range.selectNodeContents(e.currentTarget);
-                  selection?.removeAllRanges();
-                  selection?.addRange(range);
-                }}
-              >
-                {account?.address?.slice(0, 4)}
-                <span className="text-[6px]">
-                  {account?.address?.slice(4, -4)}
-                </span>
-                {account?.address?.slice(-4)}
-              </div>
+                    const selection = window.getSelection();
+                    const range = document.createRange();
+                    range.selectNodeContents(e.currentTarget);
+                    selection?.removeAllRanges();
+                    selection?.addRange(range);
+                  }}
+                >
+                  {account?.address?.slice(0, 4)}
+                  <span className="text-[6px]">
+                    {account?.address?.slice(4, -4)}
+                  </span>
+                  {account?.address?.slice(-4)}
+                </p>
+              </span>
               {balance ? (
-                <>
-                  <p className="text-xs capitalize text-gray-400 mt-3">
+                <span className="wallet-dropdown-info--balance">
+                  <p className="wallet-dropdown-balance-label text-xs capitalize text-gray-400 mt-3">
                     Balance
                   </p>
-                  <p className="text-sm font-medium text-gray-900">
+                  <p className="wallet-dropdown-balance-value ext-sm font-medium text-gray-900">
                     <CryptoValue
                       symbol={
                         activeChain?.nativeCurrency?.symbol || balance.symbol
@@ -149,15 +158,16 @@ export const WalletDropdown = ({
                       value={balance.value}
                     />
                   </p>
-                </>
+                </span>
               ) : null}
             </div>
-            <Menu.Item>
+            <Menu.Item as="div">
               {({ active }: any) => (
                 <a
                   href={`https://buy.ramp.network/?userAddress=${account?.address}&defaultAsset=${activeChain?.nativeCurrency?.symbol}`}
                   target={'_blank'}
                   className={classNames(
+                    'wallet-dropdown-item wallet-dropdown-item--buy',
                     active ? 'bg-gray-100' : '',
                     'block px-4 py-2 text-sm text-gray-700',
                   )}
@@ -166,10 +176,11 @@ export const WalletDropdown = ({
                 </a>
               )}
             </Menu.Item>
-            <Menu.Item as={'div'}>
+            <Menu.Item as="div">
               {({ active }: any) => (
                 <DisconnectButton
                   className={classNames(
+                    'wallet-dropdown-item wallet-dropdown-item--disconnect',
                     active ? 'bg-gray-100' : '',
                     'block px-4 py-2 text-sm text-gray-700 w-full text-left',
                   )}

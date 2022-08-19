@@ -1,13 +1,17 @@
 import { classNames } from '@0xflair/react-common';
 import { PropsWithChildren } from 'react';
 
-export const WalletComponentWrapper = ({
-  children,
-  className,
-}: PropsWithChildren & { className: string }) => {
+type Props = {
+  as?: keyof JSX.IntrinsicElements;
+  className: string;
+} & PropsWithChildren;
+
+export const WalletComponentWrapper = ({ children, as, className }: Props) => {
+  const Component = as || 'span';
+
   return (
-    <span className={classNames('flair-wallet-component', className)}>
+    <Component className={classNames('flair-wallet-component', className)}>
       {children}
-    </span>
+    </Component>
   );
 };

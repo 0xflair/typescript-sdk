@@ -8,6 +8,7 @@ import { ConnectPalette, ConnectPaletteProps } from '../ConnectPalette';
 import { WalletComponentWrapper } from '../WalletComponentWrapper';
 
 export type ConnectButtonProps = {
+  as?: keyof JSX.IntrinsicElements;
   label?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
@@ -41,6 +42,7 @@ export const ConnectButton = (props: ConnectButtonProps) => {
 
   return (
     <WalletComponentWrapper
+      as={props.as}
       className={classNames('connect-button-wrapper', props.wrapperClassName)}
     >
       {isConnected && !error && !isConnecting ? (

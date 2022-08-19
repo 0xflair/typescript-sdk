@@ -9,7 +9,10 @@ import MetaMaskOnboarding from '@metamask/onboarding';
 import React, { useRef } from 'react';
 import { useConnect } from 'wagmi';
 
+import { WalletComponentWrapper } from './WalletComponentWrapper';
+
 export type ConnectPaletteProps = {
+  as?: keyof JSX.IntrinsicElements;
   paletteClassName?: string;
   walletButtonClassName?: string;
   descriptionClassName?: string;
@@ -48,7 +51,7 @@ export const ConnectPalette = (props: ConnectPaletteProps) => {
   const iconClassName = props.iconClassName || '-ml-0.5 mr-2 h-12 w-12';
 
   return (
-    <div className={paletteClassName}>
+    <WalletComponentWrapper as={props.as} className={paletteClassName}>
       {connectorMagic && (
         <>
           <button
@@ -150,6 +153,6 @@ export const ConnectPalette = (props: ConnectPaletteProps) => {
           </span>
         ) : null}
       </button>
-    </div>
+    </WalletComponentWrapper>
   );
 };
