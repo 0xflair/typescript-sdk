@@ -7,26 +7,11 @@ import { useConnect } from 'wagmi';
 import { ConnectPalette, ConnectPaletteProps } from '../ConnectPalette';
 import { WalletComponentWrapper } from '../WalletComponentWrapper';
 
-type TransitionProps = {
-  enter?: string;
-  enterFrom?: string;
-  enterTo?: string;
-  entered?: string;
-  leave?: string;
-  leaveFrom?: string;
-  leaveTo?: string;
-  children: React.ReactNode;
-  show?: boolean;
-  as?: React.ElementType;
-  appear?: boolean;
-  unmount?: boolean;
-};
-
 export type ConnectButtonProps = {
   label?: React.ReactNode;
   children?: React.ReactNode;
+  className?: string;
   wrapperClassName?: string;
-  connectButtonClassName?: string;
   dialogTitle?: string;
   dialogContentPrepend?: React.ReactNode;
   dialogContentAppend?: React.ReactNode;
@@ -64,7 +49,7 @@ export const ConnectButton = (props: ConnectButtonProps) => {
         <button
           disabled={isConnecting}
           className={
-            props.connectButtonClassName ||
+            props.className ||
             'inline-flex items-center px-4 py-2 border border-transparent shadow-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed'
           }
           onClick={() => setDialogOpen(true)}

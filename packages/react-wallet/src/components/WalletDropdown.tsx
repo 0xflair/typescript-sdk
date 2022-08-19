@@ -65,7 +65,7 @@ export const WalletDropdown = ({
   const [, copyToClipboard] = useCopyToClipboard();
 
   return (
-    <WalletComponentWrapper className={'wallet-dropdown-root'}>
+    <WalletComponentWrapper className={'wallet-dropdown-wrapper'}>
       <Menu
         as="div"
         className={classNames(`relative inline-block`, className || '')}
