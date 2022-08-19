@@ -1,6 +1,3 @@
-// import '../src/index.css';
-import '../packages/react-wallet/dist/index.css';
-
 import { addDecorator } from '@storybook/react';
 import { withContexts } from '@storybook/addon-contexts/react';
 
