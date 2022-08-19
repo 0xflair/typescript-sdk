@@ -1,6 +1,6 @@
 import { FLAIR_CHAINS, FLAIR_DEFAULT_CHAIN } from '@0xflair/react-common';
 import { providers } from 'ethers';
-import { ReactNode, useCallback, useMemo } from 'react';
+import { ReactNode, useCallback, useLayoutEffect, useMemo } from 'react';
 import { createClient, Provider } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
@@ -99,17 +99,6 @@ export const WalletProvider = ({
 
       if (custodialWallet) {
         connectors.push(
-          // new MagicConnector({
-          //   chains: FLAIR_CHAINS,
-          //   options: {
-          //     apiKey: FLAIR_MAGIC_API_KEY,
-          //     oauthOptions: {
-          //       providers: ['google', 'twitter', 'github'],
-          //     },
-          //     customHeaderText: appName,
-          //     additionalMagicOptions: {},
-          //   },
-          // }),
           new MagicLinkConnector({
             chains: FLAIR_CHAINS,
             options: {

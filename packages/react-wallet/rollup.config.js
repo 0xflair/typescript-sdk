@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import path from 'path';
 import dts from 'rollup-plugin-dts';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
@@ -28,12 +29,25 @@ export default [
       resolve(),
       commonjs(),
       typescript(),
-      postcss(),
+      postcss({
+        config: {
+          path: path.resolve('postcss.config.js'),
+        },
+        extract: path.resolve('dist/index.css'),
+        plugins: [
+          require('tailwindcss'),
+          require('autoprefixer'),
+          require('postcss-add-root-selector')({
+            rootSelector: '.flair-wallet-component',
+          }),
+        ],
+      }),
     ],
   },
   {
     input: 'src/index.ts',
     output: [{ file: 'dist/types.d.ts' }],
-    plugins: [dts()],
+    external: [/\.css$/u],
+    plugins: [dts({})],
   },
 ];
