@@ -15,7 +15,7 @@ export const CollectionImage = (props: Props) => {
   return props.loadingMask &&
     (collectionLoading || collectionMetadataLoading) &&
     !collectionMetadata?.image ? (
-    props.loadingMask
+    <>{props.loadingMask}</>
   ) : (
     <img
       src={normalizeIpfsUrl(

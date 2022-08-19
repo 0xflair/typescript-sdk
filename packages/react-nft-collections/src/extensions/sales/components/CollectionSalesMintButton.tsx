@@ -4,11 +4,10 @@ import { PropsWithChildren } from 'react';
 import { useCollectionSalesMintingContext } from '../providers';
 import { BareComponentProps } from '../types';
 
-type Props = BareComponentProps &
-  PropsWithChildren & {
-    soldOutContent?: React.ReactNode;
-    mintCount?: BigNumberish;
-  };
+type Props = PropsWithChildren<BareComponentProps> & {
+  soldOutContent?: React.ReactNode;
+  mintCount?: BigNumberish;
+};
 
 export const CollectionSalesMintButton = ({
   as = 'button',

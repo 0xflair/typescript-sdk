@@ -36,7 +36,7 @@ export const CollectionSalesPrice = ({
   const Component = as;
 
   return (
-    <Component title={`Tier #${currentTierId?.toString()}`} {...attributes}>
+    <Component {...attributes}>
       {finalPrice !== undefined && !isAutoDetectingTier ? (
         Number(finalPrice.toString()) > 0 ? (
           <CryptoValue
