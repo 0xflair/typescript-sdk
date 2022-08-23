@@ -8,6 +8,7 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useState,
 } from 'react';
 import { useAccount } from 'wagmi';
@@ -116,6 +117,10 @@ export const CollectionSalesMintingProvider = ({
     autoDetectEligibleTier,
   );
 
+  const finalMinterAddress = useMemo(() => {
+    return minterAddress || account?.address || ZERO_ADDRESS;
+  }, [account?.address, minterAddress]);
+
   const {
     data: tiers,
     error: tiersError,
@@ -126,7 +131,7 @@ export const CollectionSalesMintingProvider = ({
     chainId: Number(data.chainId),
     contractVersion: data.contractVersion,
     contractAddress: data.contractAddress,
-    minterAddress,
+    minterAddress: finalMinterAddress,
   });
 
   const {
@@ -151,7 +156,7 @@ export const CollectionSalesMintingProvider = ({
     contractVersion: data.contractVersion,
     contractAddress: data.contractAddress,
     tierId: currentTierId,
-    minterAddress: minterAddress || account?.address || ZERO_ADDRESS,
+    minterAddress: finalMinterAddress,
   });
 
   const soldOut = Boolean(
@@ -199,21 +204,21 @@ export const CollectionSalesMintingProvider = ({
     });
 
     // If not found, look for a tier that is active and does nto have allowlist
-    if (!tierId) {
+    if (tierId === undefined) {
       tierId = tierIds.find((id) => {
         return Boolean(tiers[id].isActive && !tiers[id].hasAllowlist);
       });
     }
 
     // If not found, look for a tier that is just active
-    if (!tierId) {
+    if (tierId === undefined) {
       tierId = tierIds.find((id) => {
         return Boolean(tiers[id].isActive);
       });
     }
 
     // If not found, look for a tier that is eligible
-    if (!tierId) {
+    if (tierId === undefined) {
       tierId = tierIds.find((id) => {
         return Boolean(tiers[id].isEligible);
       });
@@ -260,7 +265,7 @@ export const CollectionSalesMintingProvider = ({
       // Helpers
       canMint,
       soldOut,
-      minterAddress,
+      minterAddress: finalMinterAddress,
 
       // Transaction
       txReceipt,

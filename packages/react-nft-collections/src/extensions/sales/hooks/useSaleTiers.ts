@@ -257,20 +257,8 @@ export const useSaleTiers = (config: Config) => {
     }
 
     setIsLoading(false);
-  }, [
-    config.minterAddress,
-    fetchTierById,
-    isLoading,
-    preSaleIsAllowlisted,
-    preSaleMaxMintPerWallet,
-    preSalePrice,
-    preSaleStatus,
-    publicSaleMaxMintPerTx,
-    publicSalePrice,
-    publicSaleStatus,
-    supportsSimpleSales,
-    supportsTieredSales,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [config.minterAddress, supportsSimpleSales, supportsTieredSales]);
 
   useMemo(() => {
     if (supportsSimpleSalesLoading || supportsTieredSalesLoading) {
@@ -278,7 +266,12 @@ export const useSaleTiers = (config: Config) => {
     }
 
     refetchTiers();
-  }, [supportsSimpleSalesLoading, supportsTieredSalesLoading, refetchTiers]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    config.minterAddress,
+    supportsSimpleSalesLoading,
+    supportsTieredSalesLoading,
+  ]);
 
   return {
     data: tiers,
