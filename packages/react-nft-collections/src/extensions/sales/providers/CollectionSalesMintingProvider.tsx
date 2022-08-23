@@ -3,7 +3,13 @@ import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { TransactionReceipt } from '@ethersproject/providers';
 import { BigNumberish, BytesLike } from 'ethers';
 import * as React from 'react';
-import { ReactNode, useEffect, useLayoutEffect, useState } from 'react';
+import {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from 'react';
 import { useAccount } from 'wagmi';
 
 import { useCollectionContext } from '../../../common/providers/CollectionProvider';
@@ -68,6 +74,7 @@ type CollectionSalesMintingContextValue = {
     mintError?: string | Error | null;
   };
 
+  refetchTiers: () => void;
   setCurrentTierId: (currentTierId: BigNumberish) => void;
 
   mint: (args?: {
@@ -137,7 +144,7 @@ export const CollectionSalesMintingProvider = ({
     },
     error: mintError,
     isLoading: mintLoading,
-    mint,
+    mint: doMint,
   } = useSaleMinter({
     env: data.env,
     chainId: Number(data.chainId),
@@ -223,6 +230,14 @@ export const CollectionSalesMintingProvider = ({
     tiersLoading,
   ]);
 
+  const mint = useCallback(
+    async (args?: { mintCount: BigNumberish }) => {
+      await doMint(args);
+      await refetchTiers();
+    },
+    [doMint, refetchTiers],
+  );
+
   const value = {
     data: {
       // Common
@@ -275,6 +290,7 @@ export const CollectionSalesMintingProvider = ({
       mintError: mintError as Error,
     },
 
+    refetchTiers,
     setCurrentTierId,
     mint,
   };

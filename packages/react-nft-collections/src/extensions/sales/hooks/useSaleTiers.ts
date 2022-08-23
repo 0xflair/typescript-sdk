@@ -183,6 +183,10 @@ export const useSaleTiers = (config: Config) => {
   );
 
   const refetchTiers = useCallback(async () => {
+    if (isLoading) {
+      return;
+    }
+
     setIsLoading(true);
     setError(undefined);
 
@@ -256,6 +260,7 @@ export const useSaleTiers = (config: Config) => {
   }, [
     config.minterAddress,
     fetchTierById,
+    isLoading,
     preSaleIsAllowlisted,
     preSaleMaxMintPerWallet,
     preSalePrice,
