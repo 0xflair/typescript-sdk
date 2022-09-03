@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.112.1 (2022-09-03)
+
+
+### Bug Fixes
+
+* put a timeout when fetching tx by safe hash ([b0b1639](https://github.com/0xflair/typescript-sdk/commit/b0b1639033be82aec9abb6de5267b481122d17d7))
+
+
+
+
+
 # 0.112.0 (2022-09-03)
 
 
