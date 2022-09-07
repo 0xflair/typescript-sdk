@@ -26,7 +26,7 @@ export const CollectionIfWalletCanMint = ({
 
   return (
     <Component {...attributes}>
-      {loadingMask && canMint == undefined ? (
+      {loadingMask && canMint === undefined ? (
         <>{loadingMask}</>
       ) : canMint ? (
         <>{children}</>

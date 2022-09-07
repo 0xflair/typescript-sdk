@@ -7,7 +7,7 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <WalletProvider custodialWallet={true}>
-      <ConnectButton>Connect me</ConnectButton>
+      <ConnectButton label="Connect me">Yay! Connected</ConnectButton>
     </WalletProvider>,
     div,
   );

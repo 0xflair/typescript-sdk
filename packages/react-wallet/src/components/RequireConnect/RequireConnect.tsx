@@ -134,7 +134,7 @@ export const RequireConnect = (props: Props) => {
               Connect your wallet first, then you can see this section.
             </p>
             <div className="mt-6">
-              <ConnectButton>Connect</ConnectButton>
+              <ConnectButton label="Connect" />
             </div>
           </div>
         </div>

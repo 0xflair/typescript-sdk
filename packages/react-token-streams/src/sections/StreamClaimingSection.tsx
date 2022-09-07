@@ -1,10 +1,5 @@
 import { useHasAnyOfFeatures } from '@0xflair/react-common';
-import {
-  ConnectButton,
-  IfWalletConnected,
-  IfWalletNotConnected,
-  SwitchChainButton,
-} from '@0xflair/react-wallet';
+import { ConnectButton, SwitchChainButton } from '@0xflair/react-wallet';
 
 import {
   StreamClaimableAmount,
@@ -175,20 +170,17 @@ export const StreamClaimingSection = ({}: Props) => {
                 </dl>
 
                 <div className="flex flex-col justify-center items-center mt-4">
-                  <IfWalletNotConnected>
-                    <ConnectButton className={buttonClass}>
-                      Connect to claim
-                    </ConnectButton>
-                  </IfWalletNotConnected>
-
-                  <IfWalletConnected>
+                  <ConnectButton
+                    label="Connect to claim"
+                    className={buttonClass}
+                  >
                     <SwitchChainButton
                       requiredChainId={Number(chainId)}
                       className={buttonClass}
                     >
                       <StreamClaimButton className={buttonClass} />
                     </SwitchChainButton>
-                  </IfWalletConnected>
+                  </ConnectButton>
                 </div>
 
                 <StreamClaimingStatusBar />
