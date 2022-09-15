@@ -347,6 +347,50 @@ const newChains = [
     },
     testnet: true,
   },
+  {
+    id: 25,
+    name: 'Cronos Mainnet',
+    nativeCurrency: {
+      name: 'CRO',
+      symbol: 'CRO',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://evm.cronos.org',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Cronos Chain explorer',
+        url: 'https://cronoscan.com/',
+      },
+      default: {
+        name: 'Cronos Chain explorer',
+        url: 'https://cronoscan.com/',
+      },
+    },
+  },
+  {
+    id: 338,
+    name: 'Cronos Testnet',
+    nativeCurrency: {
+      name: 'TCRO',
+      symbol: 'TCRO',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://evm-t3.cronos.org',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Cronos Chain Testnet explorer',
+        url: 'https://testnet.cronoscan.com/',
+      },
+      default: {
+        name: 'Cronos Chain Testnet explorer',
+        url: 'https://testnet.cronoscan.com/',
+      },
+    },
+  },
 ];
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
