@@ -63,4 +63,10 @@ export const KNOWN_CRYPTO_CURRENCIES: CryptoCurrency[] = [
     icon: 'BNB',
     coinGeckoId: 'binancecoin',
   },
+  {
+    symbol: 'CRO',
+    name: 'CRO',
+    icon: 'CRO',
+    coinGeckoId: 'crypto-com-chain',
+  },
 ];
