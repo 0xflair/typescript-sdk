@@ -390,6 +390,7 @@ const newChains = [
         url: 'https://testnet.cronoscan.com/',
       },
     },
+    testnet: true,
   },
 ];
 
