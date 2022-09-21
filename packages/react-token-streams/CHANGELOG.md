@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.116.4 (2022-09-21)
+
+
+### Bug Fixes
+
+* use --legacy-peer-deps ([aa01f5c](https://github.com/0xflair/typescript-sdk/commit/aa01f5cd3b91559048685243e09a63895ca10fa3))
+
+
+
+
+
 ## 0.116.3 (2022-09-16)
 
 **Note:** Version bump only for package @0xflair/react-token-streams
