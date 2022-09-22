@@ -356,7 +356,7 @@ const newChains = [
       decimals: 18,
     },
     rpcUrls: {
-      default: 'https://evm.cronos.org',
+      default: 'https://node.croswap.com/rpc',
     },
     blockExplorers: {
       etherscan: {
