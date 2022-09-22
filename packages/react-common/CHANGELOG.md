@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.116.5 (2022-09-22)
+
+
+### Bug Fixes
+
+* use more stable rpc for cronos ([f5af8eb](https://github.com/0xflair/typescript-sdk/commit/f5af8eba5fae93fcbad2c20e072497bd21f6c66c))
+
+
+
+
+
 ## 0.116.4 (2022-09-21)
 
 
