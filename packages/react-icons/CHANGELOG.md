@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.117.0 (2022-09-27)
+
+
+### Features
+
+* add custom license option for nft collections ([98be0f5](https://github.com/0xflair/typescript-sdk/commit/98be0f5ce346d3047875b3f0b4158db0b7553cd3))
+
+
+
+
+
 ## 0.116.5 (2022-09-22)
 
 
