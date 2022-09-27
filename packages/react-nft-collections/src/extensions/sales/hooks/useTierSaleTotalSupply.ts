@@ -15,7 +15,8 @@ export const useTierSaleTotalSupply = (config: Config) => {
     contractFqn: 'collections/ERC721/extensions/ERC721TieringExtension',
     functionName: 'tierMints',
     args: [config.tierId] as ArgsType,
-    enabled: config.enabled && config.tierId !== undefined,
+    enabled:
+      config.enabled && config.tierId !== undefined && config.tierId !== null,
     ...config,
   });
 };

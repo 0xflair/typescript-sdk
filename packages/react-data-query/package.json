@@ -33,9 +33,23 @@
       "last 1 safari version"
     ]
   },
+  "peerDependenciesMeta": {
+    "@0xflair/react-common": {
+      "optional": true
+    },
+    "axios": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
-    "@0xflair/react-common": "0.*",
-    "axios": "^0.26.1",
+    "@0xflair/react-common": "*",
+    "axios": "*",
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18"
   },

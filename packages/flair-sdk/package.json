@@ -23,35 +23,121 @@
     "start": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
+  "peerDependenciesMeta": {
+    "@0xflair/common": {
+      "optional": true
+    },
+    "@0xflair/contracts-registry": {
+      "optional": true
+    },
+    "@0xflair/ipfs": {
+      "optional": true
+    },
+    "@0xflair/meta-transactions": {
+      "optional": true
+    },
+    "@0xflair/react-address-lists": {
+      "optional": true
+    },
+    "@0xflair/react-coingecko": {
+      "optional": true
+    },
+    "@0xflair/react-common": {
+      "optional": true
+    },
+    "@0xflair/react-contract-verification": {
+      "optional": true
+    },
+    "@0xflair/react-data-query": {
+      "optional": true
+    },
+    "@0xflair/react-icons": {
+      "optional": true
+    },
+    "@0xflair/react-ipfs": {
+      "optional": true
+    },
+    "@0xflair/react-meta-transactions": {
+      "optional": true
+    },
+    "@0xflair/react-nft-collections": {
+      "optional": true
+    },
+    "@0xflair/react-openzeppelin": {
+      "optional": true
+    },
+    "@0xflair/react-token-streams": {
+      "optional": true
+    },
+    "@0xflair/react-ui": {
+      "optional": true
+    },
+    "@0xflair/react-wallet": {
+      "optional": true
+    },
+    "@headlessui/react": {
+      "optional": true
+    },
+    "@heroicons/react": {
+      "optional": true
+    },
+    "@tailwindcss/aspect-ratio": {
+      "optional": true
+    },
+    "@tailwindcss/forms": {
+      "optional": true
+    },
+    "@wagmi/core": {
+      "optional": true
+    },
+    "axios": {
+      "optional": true
+    },
+    "ethers": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "tailwindcss": {
+      "optional": true
+    },
+    "wagmi": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
-    "@0xflair/common": "0.*",
-    "@0xflair/contracts-registry": "0.*",
-    "@0xflair/ipfs": "0.*",
-    "@0xflair/meta-transactions": "0.*",
-    "@0xflair/react-address-lists": "0.*",
-    "@0xflair/react-coingecko": "0.*",
-    "@0xflair/react-common": "0.*",
-    "@0xflair/react-contract-verification": "0.*",
-    "@0xflair/react-data-query": "0.*",
-    "@0xflair/react-icons": "0.*",
-    "@0xflair/react-ipfs": "0.*",
-    "@0xflair/react-meta-transactions": "0.*",
-    "@0xflair/react-nft-collections": "0.*",
-    "@0xflair/react-openzeppelin": "0.*",
-    "@0xflair/react-token-streams": "0.*",
-    "@0xflair/react-ui": "0.*",
-    "@0xflair/react-wallet": "0.*",
-    "@headlessui/react": "^1.6.0",
-    "@heroicons/react": "^1.0.6",
-    "@tailwindcss/aspect-ratio": "^0.4.0",
-    "@tailwindcss/forms": "^0.5.1",
-    "@wagmi/core": "^0.2.5",
-    "axios": "^0.26.1",
-    "ethers": "^5.6.5",
+    "@0xflair/common": "*",
+    "@0xflair/contracts-registry": "*",
+    "@0xflair/ipfs": "*",
+    "@0xflair/meta-transactions": "*",
+    "@0xflair/react-address-lists": "*",
+    "@0xflair/react-coingecko": "*",
+    "@0xflair/react-common": "*",
+    "@0xflair/react-contract-verification": "*",
+    "@0xflair/react-data-query": "*",
+    "@0xflair/react-icons": "*",
+    "@0xflair/react-ipfs": "*",
+    "@0xflair/react-meta-transactions": "*",
+    "@0xflair/react-nft-collections": "*",
+    "@0xflair/react-openzeppelin": "*",
+    "@0xflair/react-token-streams": "*",
+    "@0xflair/react-ui": "*",
+    "@0xflair/react-wallet": "*",
+    "@headlessui/react": "*",
+    "@heroicons/react": "*",
+    "@tailwindcss/aspect-ratio": "*",
+    "@tailwindcss/forms": "*",
+    "@wagmi/core": "*",
+    "axios": "*",
+    "ethers": "*",
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18",
-    "tailwindcss": "^3.0.24",
-    "wagmi": "^0.3.5"
+    "tailwindcss": "*",
+    "wagmi": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.10",

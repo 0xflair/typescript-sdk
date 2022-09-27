@@ -33,30 +33,101 @@
       "last 1 safari version"
     ]
   },
+  "peerDependenciesMeta": {
+    "@0xflair/common": {
+      "optional": true
+    },
+    "@0xflair/react-coingecko": {
+      "optional": true
+    },
+    "@0xflair/react-common": {
+      "optional": true
+    },
+    "@0xflair/react-icons": {
+      "optional": true
+    },
+    "@0xflair/react-ui": {
+      "optional": true
+    },
+    "@ethersproject/providers": {
+      "optional": true
+    },
+    "@everipedia/wagmi-magic-connector": {
+      "optional": true
+    },
+    "@gnosis.pm/safe-apps-provider": {
+      "optional": true
+    },
+    "@gnosis.pm/safe-apps-sdk": {
+      "optional": true
+    },
+    "@headlessui/react": {
+      "optional": true
+    },
+    "@heroicons/react": {
+      "optional": true
+    },
+    "@metamask/onboarding": {
+      "optional": true
+    },
+    "@wagmi/core": {
+      "optional": true
+    },
+    "axios": {
+      "optional": true
+    },
+    "bn.js": {
+      "optional": true
+    },
+    "ethers": {
+      "optional": true
+    },
+    "jwt-decode": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "react-blockies": {
+      "optional": true
+    },
+    "react-modal": {
+      "optional": true
+    },
+    "react-use": {
+      "optional": true
+    },
+    "wagmi": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
-    "@0xflair/common": "0.*",
-    "@0xflair/react-coingecko": "0.*",
-    "@0xflair/react-common": "0.*",
-    "@0xflair/react-icons": "0.*",
-    "@0xflair/react-ui": "0.*",
-    "@ethersproject/providers": "^5.6.5",
-    "@everipedia/wagmi-magic-connector": "^0.3.9",
-    "@gnosis.pm/safe-apps-provider": "^0.13.1",
-    "@gnosis.pm/safe-apps-sdk": "^7.8.0",
-    "@headlessui/react": "^1.6.0",
-    "@heroicons/react": "^1.0.6",
-    "@metamask/onboarding": "^1.0.1",
-    "@wagmi/core": "^0.2.5",
-    "axios": "^0.26.1",
-    "bn.js": "^5.2.0",
-    "ethers": "^5.6.5",
-    "jwt-decode": "^3.1.2",
+    "@0xflair/common": "*",
+    "@0xflair/react-coingecko": "*",
+    "@0xflair/react-common": "*",
+    "@0xflair/react-icons": "*",
+    "@0xflair/react-ui": "*",
+    "@ethersproject/providers": "*",
+    "@everipedia/wagmi-magic-connector": "*",
+    "@gnosis.pm/safe-apps-provider": "*",
+    "@gnosis.pm/safe-apps-sdk": "*",
+    "@headlessui/react": "*",
+    "@heroicons/react": "*",
+    "@metamask/onboarding": "*",
+    "@wagmi/core": "*",
+    "axios": "*",
+    "bn.js": "*",
+    "ethers": "*",
+    "jwt-decode": "*",
     "react": "^16 || ^17 || ^18",
-    "react-blockies": "^1.4.1",
     "react-dom": "^16 || ^17 || ^18",
-    "react-modal": "^3.15.1",
-    "react-use": "^17.3.2",
-    "wagmi": "^0.3.5"
+    "react-blockies": "*",
+    "react-modal": "*",
+    "react-use": "*",
+    "wagmi": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.10",

@@ -33,10 +33,21 @@
       "last 1 safari version"
     ]
   },
+  "peerDependenciesMeta": {
+    "@0xflair/common": {
+      "optional": true
+    },
+    "axios": {
+      "optional": true
+    },
+    "ethers": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
-    "@0xflair/common": "0.*",
-    "axios": "^0.26.1",
-    "ethers": "^5.6.5"
+    "@0xflair/common": "*",
+    "axios": "*",
+    "ethers": "*"
   },
   "dependencies": {
     "@0xflair/common": "^0.116.5",

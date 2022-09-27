@@ -20,8 +20,13 @@
   "files": [
     "dist"
   ],
+  "peerDependenciesMeta": {
+    "ethers": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
-    "ethers": "^5.6.5"
+    "ethers": "*"
   },
   "dependencies": {
     "flair-contracts-v1.10": "npm:@0xflair/evm-contracts@1.10.*",
@@ -34,6 +39,7 @@
     "flair-contracts-v1.18": "npm:@0xflair/evm-contracts@1.18.*",
     "flair-contracts-v1.19": "npm:@0xflair/evm-contracts@1.19.*",
     "flair-contracts-v1.20": "npm:@0xflair/evm-contracts@1.20.*",
+    "flair-contracts-v1.21": "npm:@0xflair/evm-contracts@1.21.*",
     "flair-contracts-v1.8": "npm:@0xflair/evm-contracts@1.8.*",
     "flair-contracts-v1.9": "npm:@0xflair/evm-contracts@1.9.*"
   }

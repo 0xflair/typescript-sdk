@@ -33,12 +33,29 @@
       "last 1 safari version"
     ]
   },
+  "peerDependenciesMeta": {
+    "@0xflair/common": {
+      "optional": true
+    },
+    "@0xflair/contracts-registry": {
+      "optional": true
+    },
+    "axios": {
+      "optional": true
+    },
+    "ethers": {
+      "optional": true
+    },
+    "randombytes": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
-    "@0xflair/common": "0.*",
-    "@0xflair/contracts-registry": "0.*",
-    "axios": "^0.26.1",
-    "ethers": "^5.6.5",
-    "randombytes": "^2.1.0"
+    "@0xflair/common": "*",
+    "@0xflair/contracts-registry": "*",
+    "axios": "*",
+    "ethers": "*",
+    "randombytes": "*"
   },
   "dependencies": {
     "@0xflair/common": "^0.116.5",

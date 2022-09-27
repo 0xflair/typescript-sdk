@@ -21,11 +21,31 @@
     "test": "react-scripts test",
     "test:watch": "jest --watch"
   },
+  "peerDependenciesMeta": {
+    "@0xflair/common": {
+      "optional": true
+    },
+    "@0xflair/react-common": {
+      "optional": true
+    },
+    "@0xflair/react-wallet": {
+      "optional": true
+    },
+    "axios": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
     "@0xflair/common": "0.*",
     "@0xflair/react-common": "0.*",
     "@0xflair/react-wallet": "0.*",
-    "axios": "^0.26.1",
+    "axios": "*",
     "react": "^16 || ^17 || ^18",
     "react-dom": "^16 || ^17 || ^18"
   },

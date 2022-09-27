@@ -13,6 +13,29 @@
   "scripts": {
     "build": "rollup -c"
   },
+  "peerDependenciesMeta": {
+    "@ethersproject/providers": {
+      "optional": true
+    },
+    "@everipedia/wagmi-magic-connector": {
+      "optional": true
+    },
+    "@gnosis.pm/safe-apps-provider": {
+      "optional": true
+    },
+    "@gnosis.pm/safe-apps-sdk": {
+      "optional": true
+    },
+    "@wagmi/core": {
+      "optional": true
+    },
+    "ethers": {
+      "optional": true
+    },
+    "wagmi": {
+      "optional": true
+    }
+  },
   "peerDependencies": {
     "@ethersproject/providers": "*",
     "@everipedia/wagmi-magic-connector": "*",
