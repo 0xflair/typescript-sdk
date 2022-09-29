@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.118.2 (2022-09-29)
+
+
+### Bug Fixes
+
+* update all the dependencies for fetch functions ([064c635](https://github.com/0xflair/typescript-sdk/commit/064c6359cdbb769eaf50d6523f18721fd38ea523))
+
+
+
+
+
 ## 0.118.1 (2022-09-29)
 
 
