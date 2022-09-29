@@ -124,7 +124,7 @@ export const CollectionSalesMintingProvider = ({
     autoDetectEligibleTier,
   );
 
-  const finalMinterAddress = minterAddress || account?.address || ZERO_ADDRESS;
+  const finalMinterAddress = minterAddress || account?.address;
 
   const {
     data: tiers,

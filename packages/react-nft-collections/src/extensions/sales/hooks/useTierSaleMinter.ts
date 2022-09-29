@@ -121,6 +121,7 @@ export const useTierSaleMinter = ({
     functionName: 'mintByTier',
     contractAddress,
     signerOrProvider,
+    confirmations: 1,
     args: [
       tierId,
       mintCount,

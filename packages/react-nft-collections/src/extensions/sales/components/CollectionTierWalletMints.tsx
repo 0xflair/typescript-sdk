@@ -46,7 +46,7 @@ export const CollectionTierWalletMints = ({
 
   return (
     <Component {...attributes}>
-      {loadingMask && isLoading && data === undefined ? (
+      {loadingMask && (isLoading || data === undefined) ? (
         <>{loadingMask}</>
       ) : (
         data?.toLocaleString()

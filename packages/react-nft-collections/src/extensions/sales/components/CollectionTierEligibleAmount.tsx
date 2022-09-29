@@ -16,7 +16,7 @@ export const CollectionTierEligibleAmount = ({
 }: Props) => {
   const {
     data: { currentTierId, tiers },
-    isLoading: { isAutoDetectingTier, tiersLoading },
+    isLoading: { isAutoDetectingTier, tiersLoading, mintLoading },
   } = useCollectionSalesMintingContext();
   const resolvedTierId = Number(
     tierId !== undefined ? tierId : currentTierId || '0',
@@ -31,8 +31,7 @@ export const CollectionTierEligibleAmount = ({
   return (
     <Component {...attributes}>
       {loadingMask &&
-      (isAutoDetectingTier || tiersLoading) &&
-      eligibleAmount == undefined ? (
+      (isAutoDetectingTier || tiersLoading || eligibleAmount == undefined) ? (
         <>{loadingMask}</>
       ) : (
         eligibleAmount?.toLocaleString()
