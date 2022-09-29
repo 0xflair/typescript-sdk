@@ -17,6 +17,6 @@
   "include": [
     "src",
     "scripts",
-    "node_modules/flair-contracts-v1.21/typechain/**/*"
+    "node_modules/flair-contracts-v1.22/typechain/**/*"
   ]
 }
