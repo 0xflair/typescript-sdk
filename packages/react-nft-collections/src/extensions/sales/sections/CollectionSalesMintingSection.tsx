@@ -50,7 +50,7 @@ export const CollectionSalesMintingSection = ({
     <CollectionSalesMintingProvider
       autoDetectEligibleTier={autoDetectEligibleTier}
       defaultTier={defaultTier}
-      minterAddress={minterAddress}
+      minterAddress={minterAddress || account?.address}
     >
       <main className="flex flex-col gap-x-8">
         <div>

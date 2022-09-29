@@ -158,6 +158,7 @@ export const useSaleTiers = (config: Config) => {
       const eligibleAmount = isActive
         ? await getEligibleAmount({
             tierId,
+            minterAddress: config.minterAddress,
             maxAllowance: merkleMetadata?.maxAllowance,
             merkleProof,
           })
