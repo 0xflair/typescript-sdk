@@ -16,6 +16,7 @@ export type NftCollection<
 export type NftCollectionMetadata = {
   name?: string;
   image?: string;
+  animation_url?: string;
   description?: string;
   external_link?: string;
   seller_fee_basis_points?: string;

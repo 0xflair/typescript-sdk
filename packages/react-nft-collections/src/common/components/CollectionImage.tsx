@@ -1,6 +1,5 @@
-import { normalizeIpfsUrl } from '@0xflair/ipfs';
-
 import { useCollectionContext } from '../providers/CollectionProvider';
+import { Media } from './Media';
 
 type Props = {
   loadingMask?: React.ReactNode;
@@ -17,10 +16,8 @@ export const CollectionImage = (props: Props) => {
     !collectionMetadata?.image ? (
     <>{props.loadingMask}</>
   ) : (
-    <img
-      src={normalizeIpfsUrl(
-        collectionMetadata?.image || collection?.config?.collectionImageUri,
-      )}
+    <Media
+      uri={collectionMetadata?.animation_url || collectionMetadata?.image}
       {...props}
     />
   );
