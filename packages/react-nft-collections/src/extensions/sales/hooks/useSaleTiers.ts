@@ -180,7 +180,7 @@ export const useSaleTiers = (config: Config) => {
       };
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [contract, config.minterAddress],
+    [contract, config.minterAddress, checkAllowlist, getEligibleAmount],
   );
 
   const refetchTiers = useCallback(async () => {
