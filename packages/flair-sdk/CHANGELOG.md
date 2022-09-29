@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.119.0 (2022-09-29)
+
+
+### Features
+
+* automatically show video when type is video ([5239555](https://github.com/0xflair/typescript-sdk/commit/52395556cc24e72a74a4baea704cb287f1cd2433))
+
+
+
+
+
 ## 0.118.3 (2022-09-29)
 
 

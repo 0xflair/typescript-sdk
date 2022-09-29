@@ -1,6 +1,6 @@
 {
   "name": "@0xflair/react-common",
-  "version": "0.118.3",
+  "version": "0.119.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -78,8 +78,8 @@
     "wagmi": "*"
   },
   "dependencies": {
-    "@0xflair/common": "^0.118.3",
-    "@0xflair/contracts-registry": "^0.118.3",
+    "@0xflair/common": "^0.119.0",
+    "@0xflair/contracts-registry": "^0.119.0",
     "@tanstack/query-sync-storage-persister": "^4.0.10",
     "@tanstack/react-query-persist-client": "^4.0.10",
     "@wagmi/core": "^0.2.5",
