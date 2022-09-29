@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.118.1 (2022-09-29)
+
+
+### Bug Fixes
+
+* get latest instances of eligibility func ([73c9834](https://github.com/0xflair/typescript-sdk/commit/73c98340e6249b64b725d0c674c359f7994fce17))
+
+
+
+
+
 # 0.118.0 (2022-09-29)
 
 
