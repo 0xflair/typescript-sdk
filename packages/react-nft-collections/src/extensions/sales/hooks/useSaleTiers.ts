@@ -179,15 +179,15 @@ export const useSaleTiers = (config: Config) => {
             : undefined,
       };
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [contract, config.minterAddress, checkAllowlist, getEligibleAmount],
+    [
+      contract,
+      checkAllowlist,
+      getEligibleAmount,
+      config.minterAddress,
+      eligibleAmountError,
+    ],
   );
-
   const refetchTiers = useCallback(async () => {
-    if (isLoading) {
-      return;
-    }
-
     setIsLoading(true);
     setError(undefined);
 
@@ -258,18 +258,18 @@ export const useSaleTiers = (config: Config) => {
     }
 
     setIsLoading(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    config.minterAddress,
-    supportsSimpleSales,
     supportsTieredSales,
-    preSaleAllowlistCheckerLoading,
-    preSaleMintLoading,
-    preSaleStatusLoading,
-    publicSaleStatusLoading,
+    supportsSimpleSales,
+    fetchTierById,
     preSaleStatus,
+    preSaleMaxMintPerWallet,
+    preSalePrice,
     preSaleIsAllowlisted,
+    config.minterAddress,
     publicSaleStatus,
+    publicSaleMaxMintPerTx,
+    publicSalePrice,
   ]);
 
   useMemo(() => {
