@@ -1,6 +1,6 @@
 {
   "name": "@0xflair/react-address-lists",
-  "version": "0.117.1",
+  "version": "0.118.0",
   "private": false,
   "repository": {
     "type": "git",
@@ -50,9 +50,9 @@
     "react-dom": "^16 || ^17 || ^18"
   },
   "dependencies": {
-    "@0xflair/common": "^0.117.1",
-    "@0xflair/react-common": "^0.117.1",
-    "@0xflair/react-wallet": "^0.117.1",
+    "@0xflair/common": "^0.118.0",
+    "@0xflair/react-common": "^0.118.0",
+    "@0xflair/react-wallet": "^0.118.0",
     "axios": "^0.26.1"
   },
   "devDependencies": {

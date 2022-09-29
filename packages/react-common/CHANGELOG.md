@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.118.0 (2022-09-29)
+
+
+### Features
+
+* add on mint success event handler ([de5f733](https://github.com/0xflair/typescript-sdk/commit/de5f73320e78e8b302575ec22a38c87f1236aadf))
+
+
+
+
+
 ## 0.117.1 (2022-09-29)
 
 
