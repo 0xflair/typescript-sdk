@@ -11,6 +11,7 @@ import { useAccount } from 'wagmi';
 import { CollectionSupplyCounter } from '../../../common/components/CollectionSupplyCounter';
 import { useCollectionContext } from '../../../common/providers/CollectionProvider';
 import {
+  CollectionIfWalletCanMint,
   CollectionSalesAllowlistStatus,
   CollectionSalesMintButton,
   CollectionSalesMintInput,
@@ -127,8 +128,10 @@ export const CollectionSalesMintingSection = ({
             {/* Maximum eligible amount */}
             {account || minterAddress ? (
               <small className="block font-light mt-2 text-xs">
-                You can mint up to{' '}
-                <CollectionTierEligibleAmount as="div" className="inline" />.{' '}
+                <CollectionIfWalletCanMint>
+                  You can mint up to{' '}
+                  <CollectionTierEligibleAmount as="div" className="inline" />.{' '}
+                </CollectionIfWalletCanMint>
                 {supportsTieredSales ? (
                   <>
                     You have minted <CollectionTierWalletMints /> NFTs in this
