@@ -41,6 +41,8 @@ export const Media = ({
         autoPlay={true}
         controls={true}
         loop={true}
+        muted={true}
+        playsInline={true}
         {...attributes}
       />
     );
