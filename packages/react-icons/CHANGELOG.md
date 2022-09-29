@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.118.3 (2022-09-29)
+
+
+### Bug Fixes
+
+* properly handle mint allowance and on mint success ([64bc66e](https://github.com/0xflair/typescript-sdk/commit/64bc66e35ce99d237c4c85880e3ba128c915ae61))
+
+
+
+
+
 ## 0.118.2 (2022-09-29)
 
 
