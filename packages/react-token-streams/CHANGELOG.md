@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.119.2 (2022-09-29)
+
+
+### Bug Fixes
+
+* hide the eligible amount if wallet cannot mint ([d62380d](https://github.com/0xflair/typescript-sdk/commit/d62380df6fa883fad220d9089c6560b234b1be37))
+
+
+
+
+
 ## 0.119.1 (2022-09-29)
 
 
