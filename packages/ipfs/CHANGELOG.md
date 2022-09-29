@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.119.1 (2022-09-29)
+
+
+### Bug Fixes
+
+* auto play video as muted ([61f446a](https://github.com/0xflair/typescript-sdk/commit/61f446a2472c804720b5584968c7a0558202a4e5))
+
+
+
+
+
 # 0.119.0 (2022-09-29)
 
 
