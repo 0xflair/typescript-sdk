@@ -78,7 +78,7 @@ type CollectionSalesMintingContextValue = {
   refetchTiers: () => void;
   setCurrentTierId: (currentTierId: BigNumberish) => void;
 
-  mint: (args?: {
+  mint: (args: {
     mintCount: BigNumberish;
     allowlistProof?: BytesLike[];
   }) => void;
@@ -100,6 +100,12 @@ type Props = {
   autoDetectEligibleTier?: boolean;
 
   minterAddress?: BytesLike;
+
+  onMintSuccess?: (args: {
+    mintCount: BigNumberish;
+    txResponse: TransactionResponse;
+    txReceipt: TransactionReceipt;
+  }) => void;
 };
 
 export const CollectionSalesMintingProvider = ({
@@ -107,6 +113,7 @@ export const CollectionSalesMintingProvider = ({
   defaultTier = 0,
   autoDetectEligibleTier = true,
   minterAddress,
+  onMintSuccess,
 }: Props) => {
   const { data: account } = useAccount();
   const { data, isLoading, error } = useCollectionContext();
@@ -234,11 +241,21 @@ export const CollectionSalesMintingProvider = ({
   ]);
 
   const mint = useCallback(
-    async (args?: { mintCount: BigNumberish }) => {
-      await doMint(args);
+    async (args: { mintCount: BigNumberish }) => {
+      const result = await doMint(args);
+
+      if (result) {
+        onMintSuccess &&
+          onMintSuccess({
+            ...args,
+            txReceipt: result.receipt,
+            txResponse: result.response,
+          });
+      }
+
       await refetchTiers();
     },
-    [doMint, refetchTiers],
+    [doMint, onMintSuccess, refetchTiers],
   );
 
   const value = {

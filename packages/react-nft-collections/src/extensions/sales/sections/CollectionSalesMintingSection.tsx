@@ -1,5 +1,9 @@
 import { useHasAnyOfFeatures } from '@0xflair/react-common';
 import { ConnectButton, SwitchChainButton } from '@0xflair/react-wallet';
+import {
+  TransactionReceipt,
+  TransactionResponse,
+} from '@ethersproject/providers';
 import { BigNumberish, BytesLike } from 'ethers';
 import { useState } from 'react';
 import { useAccount } from 'wagmi';
@@ -22,12 +26,19 @@ type Props = {
   autoDetectEligibleTier?: boolean;
   defaultTier?: BigNumberish;
   minterAddress?: BytesLike;
+
+  onMintSuccess?: (args: {
+    mintCount: BigNumberish;
+    txResponse: TransactionResponse;
+    txReceipt: TransactionReceipt;
+  }) => void;
 };
 
 export const CollectionSalesMintingSection = ({
   autoDetectEligibleTier = true,
   defaultTier = 0,
   minterAddress,
+  onMintSuccess,
 }: Props) => {
   const {
     data: { env, chainId, contractAddress },
@@ -51,6 +62,7 @@ export const CollectionSalesMintingSection = ({
       autoDetectEligibleTier={autoDetectEligibleTier}
       defaultTier={defaultTier}
       minterAddress={minterAddress || account?.address}
+      onMintSuccess={onMintSuccess}
     >
       <main className="flex flex-col gap-x-8">
         <div>
