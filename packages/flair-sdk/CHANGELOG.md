@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.117.1 (2022-09-29)
+
+
+### Bug Fixes
+
+* use literal values when calculating final minter address ([1c3ca13](https://github.com/0xflair/typescript-sdk/commit/1c3ca13402f8c50cd282d1617c072a23a3ca26db))
+
+
+
+
+
 # 0.117.0 (2022-09-27)
 
 
