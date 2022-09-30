@@ -14,6 +14,8 @@ export const useTierSaleTotalSupply = (config: Config) => {
   return useContractRead<BigNumberish, ArgsType>({
     contractFqn: 'collections/ERC721/extensions/ERC721TieringExtension',
     functionName: 'tierMints',
+    cacheTime: 60,
+    staleTime: 5,
     args: [config.tierId] as ArgsType,
     enabled:
       config.enabled && config.tierId !== undefined && config.tierId !== null,

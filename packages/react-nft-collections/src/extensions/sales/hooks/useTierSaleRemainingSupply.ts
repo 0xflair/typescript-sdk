@@ -21,16 +21,17 @@ export const useTierSaleRemainingSupply = ({
   tierId,
   ...restOfConfig
 }: Config) => {
+  const [error, setError] = useState<Error | string>();
   const [data, setData] = useState<BigNumber>();
 
-  const { data: tierInfo } = useTierSaleInformation({
+  const { call: getTierInfo } = useTierSaleInformation({
     chainId,
     contractAddress,
     tierId,
     enabled: enabled && tierId !== undefined,
   });
 
-  const { data: tierSupply } = useTierSaleTotalSupply({
+  const { call: getTierSupply } = useTierSaleTotalSupply({
     chainId,
     contractAddress,
     tierId,
@@ -49,35 +50,43 @@ export const useTierSaleRemainingSupply = ({
 
   const call = useCallback(
     async (overrides?: { args?: ArgsType }) => {
-      const result = await hook.call(overrides);
+      try {
+        setError(undefined);
+        const supply = await hook.call(overrides);
+        const tierInfo = await getTierInfo();
+        const tierSupply = await getTierSupply();
 
-      if (
-        result.data === undefined ||
-        tierInfo === undefined ||
-        tierSupply === undefined
-      ) {
-        setData(undefined);
-        return undefined;
-      }
-
-      const remainingForTier = BigNumber.from(result.data || 0);
-      const maxAllocation = BigNumber.from(tierInfo.maxAllocation || 0);
-      const mintedSupply = BigNumber.from(tierSupply || 0);
-
-      if (maxAllocation.gt(0)) {
-        if (maxAllocation.gt(mintedSupply)) {
-          if (maxAllocation.sub(mintedSupply).lt(remainingForTier)) {
-            return maxAllocation.sub(mintedSupply);
-          }
-        } else {
-          return BigNumber.from(0);
+        if (
+          supply === undefined ||
+          tierInfo === undefined ||
+          tierSupply === undefined
+        ) {
+          setData(undefined);
+          return undefined;
         }
-      }
 
-      setData(remainingForTier);
-      return remainingForTier;
+        const remainingForTier = BigNumber.from(supply || 0);
+        const maxAllocation = BigNumber.from(tierInfo.maxAllocation || 0);
+        const mintedSupply = BigNumber.from(tierSupply || 0);
+
+        if (maxAllocation.gt(0)) {
+          if (maxAllocation.gt(mintedSupply)) {
+            if (maxAllocation.sub(mintedSupply).lt(remainingForTier)) {
+              return maxAllocation.sub(mintedSupply);
+            }
+          } else {
+            return BigNumber.from(0);
+          }
+        }
+
+        setData(remainingForTier);
+        return remainingForTier;
+      } catch (error: any) {
+        setData(undefined);
+        setError(error);
+      }
     },
-    [hook, tierInfo, tierSupply],
+    [getTierInfo, getTierSupply, hook],
   );
 
   useEffect(() => {
@@ -88,6 +97,7 @@ export const useTierSaleRemainingSupply = ({
 
   return {
     ...hook,
+    error: error || hook.error,
     data,
     call,
   } as const;
