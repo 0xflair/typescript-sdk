@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.1 (2022-09-30)
+
+
+### Bug Fixes
+
+* get tier info and supply within callback ([a64d133](https://github.com/0xflair/typescript-sdk/commit/a64d13326131cb7b9f7e7f2a895c789057926326))
+
+
+
+
+
 # 0.120.0 (2022-09-30)
 
 
