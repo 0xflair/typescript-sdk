@@ -49,12 +49,17 @@ export const useTierSaleRemainingSupply = ({
   });
 
   const call = useCallback(
-    async (overrides?: { args?: ArgsType }) => {
+    async (tierId?: BigNumberish) => {
       try {
         setError(undefined);
-        const supply = await hook.call(overrides);
-        const tierInfo = await getTierInfo();
-        const tierSupply = await getTierSupply();
+
+        const supply = await hook.call(tierId ? { args: [tierId] } : undefined);
+        const tierInfo = await getTierInfo(
+          tierId ? { args: [tierId] } : undefined,
+        );
+        const tierSupply = await getTierSupply(
+          tierId ? { args: [tierId] } : undefined,
+        );
 
         if (
           supply === undefined ||
