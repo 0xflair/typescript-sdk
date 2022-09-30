@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.120.0 (2022-09-30)
+
+
+### Features
+
+* skip tier selection if no remaining suply for the tier ([0a06836](https://github.com/0xflair/typescript-sdk/commit/0a068361f1ed7aacdc804b939b995a24ca23b8d7))
+
+
+
+
+
 ## 0.119.2 (2022-09-29)
 
 
