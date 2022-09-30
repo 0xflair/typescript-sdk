@@ -13,6 +13,7 @@ import { Tier } from '../types';
 import { useSimpleSaleMinter } from './useSimpleSaleMinter';
 import { useTierSaleAllowlistChecker } from './useTierSaleAllowlistChecker';
 import { useTierSaleEligibleAmount } from './useTierSaleEligibleAmount';
+import { useTierSaleRemainingSupply } from './useTierSaleRemainingSupply';
 
 type ArgsType = [tierId: BigNumberish];
 
@@ -72,6 +73,16 @@ export const useSaleTiers = (config: Config) => {
     chainId: config.chainId,
     contractAddress: config.contractAddress,
     minterAddress: config.minterAddress,
+    enabled: false,
+  });
+
+  const {
+    error: tierSupplyError,
+    isLoading: tierSupplyLoading,
+    call: getTierRemainingSupply,
+  } = useTierSaleRemainingSupply({
+    chainId: config.chainId,
+    contractAddress: config.contractAddress,
     enabled: false,
   });
 
@@ -167,6 +178,10 @@ export const useSaleTiers = (config: Config) => {
             })
           : undefined;
 
+      const remainingSupply = await getTierRemainingSupply({
+        args: [tierId],
+      });
+
       return {
         ...tier,
         isSavedOnChain: true,
@@ -174,6 +189,7 @@ export const useSaleTiers = (config: Config) => {
         hasAllowlist,
         isAllowlisted,
         eligibleAmount,
+        remainingSupply,
         isEligible:
           eligibleAmount !== undefined
             ? Boolean(
@@ -185,8 +201,9 @@ export const useSaleTiers = (config: Config) => {
     [
       contract,
       checkAllowlist,
-      getEligibleAmount,
       config.minterAddress,
+      getEligibleAmount,
+      getTierRemainingSupply,
       eligibleAmountError,
     ],
   );
@@ -300,6 +317,7 @@ export const useSaleTiers = (config: Config) => {
       supportsTieredSalesError ||
       // tiered sales
       allowlistCheckerError ||
+      tierSupplyError ||
       eligibleAmountError ||
       // simple sales
       preSaleStatusError ||
@@ -316,6 +334,7 @@ export const useSaleTiers = (config: Config) => {
       supportsTieredSalesLoading ||
       // tiered sales
       allowlistCheckerLoading ||
+      tierSupplyLoading ||
       eligibleAmountLoading ||
       // simple sales
       preSaleStatusLoading ||

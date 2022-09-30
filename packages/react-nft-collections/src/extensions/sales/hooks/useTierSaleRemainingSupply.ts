@@ -3,7 +3,7 @@ import {
   useContractRead,
 } from '@0xflair/react-common';
 import { BigNumber, BigNumberish } from 'ethers';
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useTierSaleInformation } from './useTierSaleInformation';
 import { useTierSaleTotalSupply } from './useTierSaleTotalSupply';
@@ -21,6 +21,8 @@ export const useTierSaleRemainingSupply = ({
   tierId,
   ...restOfConfig
 }: Config) => {
+  const [data, setData] = useState<BigNumber>();
+
   const { data: tierInfo } = useTierSaleInformation({
     chainId,
     contractAddress,
@@ -35,7 +37,7 @@ export const useTierSaleRemainingSupply = ({
     enabled: enabled && tierId !== undefined,
   });
 
-  const result = useContractRead<BigNumberish, ArgsType>({
+  const hook = useContractRead<BigNumberish, ArgsType>({
     contractFqn: 'collections/ERC721/extensions/ERC721TieringExtension',
     functionName: 'remainingForTier',
     chainId,
@@ -45,30 +47,48 @@ export const useTierSaleRemainingSupply = ({
     ...restOfConfig,
   });
 
-  const data = useMemo(() => {
-    if (
-      result.data === undefined ||
-      tierInfo === undefined ||
-      tierSupply === undefined
-    ) {
-      return undefined;
-    }
+  const call = useCallback(
+    async (overrides?: { args?: ArgsType }) => {
+      const result = await hook.call(overrides);
 
-    const remainingForTier = BigNumber.from(result.data || 0);
-    const maxAllocation = BigNumber.from(tierInfo.maxAllocation || 0);
-    const mintedSupply = BigNumber.from(tierSupply || 0);
-
-    if (maxAllocation.gt(0)) {
-      if (maxAllocation.sub(mintedSupply).lt(remainingForTier)) {
-        return maxAllocation.sub(mintedSupply);
+      if (
+        result.data === undefined ||
+        tierInfo === undefined ||
+        tierSupply === undefined
+      ) {
+        setData(undefined);
+        return undefined;
       }
-    }
 
-    return remainingForTier;
-  }, [result, tierInfo, tierSupply]);
+      const remainingForTier = BigNumber.from(result.data || 0);
+      const maxAllocation = BigNumber.from(tierInfo.maxAllocation || 0);
+      const mintedSupply = BigNumber.from(tierSupply || 0);
+
+      if (maxAllocation.gt(0)) {
+        if (maxAllocation.gt(mintedSupply)) {
+          if (maxAllocation.sub(mintedSupply).lt(remainingForTier)) {
+            return maxAllocation.sub(mintedSupply);
+          }
+        } else {
+          return BigNumber.from(0);
+        }
+      }
+
+      setData(remainingForTier);
+      return remainingForTier;
+    },
+    [hook, tierInfo, tierSupply],
+  );
+
+  useEffect(() => {
+    if (enabled && tierId !== undefined) {
+      call();
+    }
+  }, [call, enabled, tierId]);
 
   return {
-    ...result,
+    ...hook,
     data,
+    call,
   } as const;
 };

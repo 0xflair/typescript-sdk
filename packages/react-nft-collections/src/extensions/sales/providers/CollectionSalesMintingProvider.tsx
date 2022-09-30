@@ -1,16 +1,8 @@
-import { ZERO_ADDRESS } from '@0xflair/common';
 import { TransactionResponse } from '@ethersproject/abstract-provider';
 import { TransactionReceipt } from '@ethersproject/providers';
-import { BigNumberish, BytesLike } from 'ethers';
+import { BigNumber, BigNumberish, BytesLike } from 'ethers';
 import * as React from 'react';
-import {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 
 import { useCollectionContext } from '../../../common/providers/CollectionProvider';
@@ -203,29 +195,47 @@ export const CollectionSalesMintingProvider = ({
       return;
     }
 
-    // Find the first tier that is eligible and is active then set it as current tier
+    // Find the first tier that is eligible and is active and has remaining supply then set it as current tier
     let tierId = tierIds.find((id) => {
-      return Boolean(tiers[id].isActive && tiers[id].isEligible);
+      return Boolean(
+        tiers[id].isActive &&
+          tiers[id].isEligible &&
+          (tiers[id].remainingSupply === undefined ||
+            BigNumber.from(tiers[id].remainingSupply).gt(0)),
+      );
     });
 
-    // If not found, look for a tier that is active and does nto have allowlist
+    // If not found, look for a tier that is active and does not have allowlist and has remaining supply
     if (tierId === undefined) {
       tierId = tierIds.find((id) => {
-        return Boolean(tiers[id].isActive && !tiers[id].hasAllowlist);
+        return Boolean(
+          tiers[id].isActive &&
+            !tiers[id].hasAllowlist &&
+            (tiers[id].remainingSupply === undefined ||
+              BigNumber.from(tiers[id].remainingSupply).gt(0)),
+        );
       });
     }
 
-    // If not found, look for a tier that is just active
+    // If not found, look for a tier that is just active and has remaining supply
     if (tierId === undefined) {
       tierId = tierIds.find((id) => {
-        return Boolean(tiers[id].isActive);
+        return (
+          Boolean(tiers[id].isActive) &&
+          (tiers[id].remainingSupply === undefined ||
+            BigNumber.from(tiers[id].remainingSupply).gt(0))
+        );
       });
     }
 
-    // If not found, look for a tier that is eligible
+    // If not found, look for a tier that is eligible and has remaining supply
     if (tierId === undefined) {
       tierId = tierIds.find((id) => {
-        return Boolean(tiers[id].isEligible);
+        return (
+          Boolean(tiers[id].isEligible) &&
+          (tiers[id].remainingSupply === undefined ||
+            BigNumber.from(tiers[id].remainingSupply).gt(0))
+        );
       });
     }
 

@@ -126,20 +126,18 @@ export const CollectionSalesMintingSection = ({
             </ConnectButton>
 
             {/* Maximum eligible amount */}
-            {account || minterAddress ? (
-              <small className="block font-light mt-2 text-xs">
-                <CollectionIfWalletCanMint>
-                  You can mint up to{' '}
-                  <CollectionTierEligibleAmount as="div" className="inline" />.{' '}
-                </CollectionIfWalletCanMint>
-                {supportsTieredSales ? (
-                  <>
-                    You have minted <CollectionTierWalletMints /> NFTs in this
-                    tier.
-                  </>
-                ) : null}
-              </small>
-            ) : null}
+            <small className="block font-light mt-2 text-xs">
+              <CollectionIfWalletCanMint>
+                You can mint up to{' '}
+                <CollectionTierEligibleAmount as="div" className="inline" />.{' '}
+              </CollectionIfWalletCanMint>
+              {supportsTieredSales && (account || minterAddress) ? (
+                <>
+                  You have minted <CollectionTierWalletMints /> NFTs in this
+                  tier.
+                </>
+              ) : null}
+            </small>
           </div>
 
           <CollectionSalesMintStatusBar className="mt-4 flex flex-col gap-2" />
