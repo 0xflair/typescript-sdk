@@ -5,7 +5,9 @@ export const useStickyState = <S>(
   key: string,
   ignoredKeys?: string[],
 ): [S, Dispatch<SetStateAction<S>>] => {
-  const supportsLocalStorage = typeof window?.localStorage !== 'undefined';
+  const supportsLocalStorage =
+    typeof window !== 'undefined' &&
+    typeof window?.localStorage !== 'undefined';
 
   const [value, setValue] = React.useState<S>(() => {
     const stickyValue = supportsLocalStorage

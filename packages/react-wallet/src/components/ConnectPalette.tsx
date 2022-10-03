@@ -50,7 +50,8 @@ export const ConnectPalette = (props: ConnectPaletteProps) => {
   const connectorMagic = connectors.find((c) => c.id == 'magic');
 
   const injectedAvailable =
-    window?.['ethereum'] || MetaMaskOnboarding.isMetaMaskInstalled();
+    (typeof window !== 'undefined' && window?.['ethereum']) ||
+    MetaMaskOnboarding.isMetaMaskInstalled();
 
   const paletteClassName =
     props.paletteClassName || 'inline-flex flex-col gap-4';

@@ -2,9 +2,12 @@ import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 import { createWebStoragePersister } from 'react-query/createWebStoragePersister';
 import { persistQueryClient } from 'react-query/persistQueryClient';
 
-const localStoragePersister = createWebStoragePersister({
-  storage: window?.localStorage,
-});
+const localStoragePersister =
+  typeof window !== 'undefined'
+    ? createWebStoragePersister({
+        storage: window?.localStorage,
+      })
+    : undefined;
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,10 +23,12 @@ const queryClient = new QueryClient({
   },
 });
 
-persistQueryClient({
-  queryClient,
-  persister: localStoragePersister,
-});
+if (localStoragePersister) {
+  persistQueryClient({
+    queryClient,
+    persister: localStoragePersister,
+  });
+}
 
 type Props = {
   children?: React.ReactNode;
