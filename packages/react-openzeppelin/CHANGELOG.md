@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.5 (2022-10-03)
+
+
+### Bug Fixes
+
+* check window type before access for SSR ([67985e7](https://github.com/0xflair/typescript-sdk/commit/67985e7efeba18062af8f4d083ae62fecaa12175))
+
+
+
+
+
 ## 0.120.4 (2022-10-03)
 
 
