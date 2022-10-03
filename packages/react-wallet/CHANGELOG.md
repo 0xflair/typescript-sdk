@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.2 (2022-10-03)
+
+
+### Bug Fixes
+
+* some package deps and consider tiers allocation for auto-detection ([2100fd3](https://github.com/0xflair/typescript-sdk/commit/2100fd30298b94a7429cf3916aa4f8e3777dde2b))
+
+
+
+
+
 ## 0.120.1 (2022-09-30)
 
 
