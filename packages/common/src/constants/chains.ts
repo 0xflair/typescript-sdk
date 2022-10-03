@@ -392,6 +392,51 @@ const newChains = [
     },
     testnet: true,
   },
+  {
+    id: 42220,
+    name: 'Celo Mainnet',
+    nativeCurrency: {
+      name: 'CELO',
+      symbol: 'CELO',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://forno.celo.org',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Celo explorer',
+        url: 'https://explorer.celo.org/',
+      },
+      default: {
+        name: 'Celo explorer',
+        url: 'https://explorer.celo.org/',
+      },
+    },
+  },
+  {
+    id: 44787,
+    name: 'Celo Alfajores Testnet',
+    nativeCurrency: {
+      name: 'CELO',
+      symbol: 'CELO',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://alfajores-forno.celo-testnet.org',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Celo Alfajores Testnet explorer',
+        url: 'https://alfajores-blockscout.celo-testnet.org/',
+      },
+      default: {
+        name: 'Celo Alfajores Testnet explorer',
+        url: 'https://alfajores-blockscout.celo-testnet.org/',
+      },
+    },
+    testnet: true,
+  },
 ];
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
