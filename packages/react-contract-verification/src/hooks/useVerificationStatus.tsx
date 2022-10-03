@@ -2,7 +2,7 @@ import { Environment, useAxiosGet } from '@0xflair/react-common';
 import { useLoginJwt } from '@0xflair/react-wallet';
 import axios from 'axios';
 import { useMemo } from 'react';
-import { useInterval } from 'usehooks-ts';
+import { useInterval } from 'react-use';
 
 import { FLAIR_CONTRACT_VERIFICATION_BACKEND } from '../constants';
 import { ContractVerification } from '../types';
