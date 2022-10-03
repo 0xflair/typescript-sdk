@@ -3,7 +3,7 @@ import {
   useContractRead,
 } from '@0xflair/react-common';
 import { BigNumber, BigNumberish } from 'ethers';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useTierSaleInformation } from './useTierSaleInformation';
 import { useTierSaleTotalSupply } from './useTierSaleTotalSupply';
@@ -40,6 +40,8 @@ export const useTierSaleRemainingSupply = ({
 
   const hook = useContractRead<BigNumberish, ArgsType>({
     contractFqn: 'collections/ERC721/extensions/ERC721TieringExtension',
+    cacheTime: 10,
+    staleTime: 2,
     functionName: 'remainingForTier',
     chainId,
     contractAddress,
@@ -53,26 +55,28 @@ export const useTierSaleRemainingSupply = ({
       try {
         setError(undefined);
 
-        const supply = await hook.call(tierId ? { args: [tierId] } : undefined);
-        const tierInfo = await getTierInfo(
-          tierId ? { args: [tierId] } : undefined,
+        const remainingSupply = await hook.call(
+          tierId !== undefined ? { args: [tierId] } : undefined,
         );
-        const tierSupply = await getTierSupply(
-          tierId ? { args: [tierId] } : undefined,
+        const tierInfo = await getTierInfo(
+          tierId !== undefined ? { args: [tierId] } : undefined,
+        );
+        const tierMinted = await getTierSupply(
+          tierId !== undefined ? { args: [tierId] } : undefined,
         );
 
         if (
-          supply === undefined ||
+          remainingSupply === undefined ||
           tierInfo === undefined ||
-          tierSupply === undefined
+          tierMinted === undefined
         ) {
           setData(undefined);
           return undefined;
         }
 
-        const remainingForTier = BigNumber.from(supply || 0);
+        const remainingForTier = BigNumber.from(remainingSupply || 0);
         const maxAllocation = BigNumber.from(tierInfo.maxAllocation || 0);
-        const mintedSupply = BigNumber.from(tierSupply || 0);
+        const mintedSupply = BigNumber.from(tierMinted || 0);
 
         if (maxAllocation.gt(0)) {
           if (maxAllocation.gt(mintedSupply)) {

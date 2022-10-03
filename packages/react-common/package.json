@@ -75,7 +75,8 @@
     "react-dom": "^16 || ^17 || ^18",
     "react-query": "*",
     "react-use": "*",
-    "wagmi": "*"
+    "wagmi": "*",
+    "lodash": "*"
   },
   "dependencies": {
     "@0xflair/common": "^0.120.1",

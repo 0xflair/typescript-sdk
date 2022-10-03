@@ -5,7 +5,7 @@ import {
   useHasAnyOfFeatures,
   ZERO_BYTES32,
 } from '@0xflair/react-common';
-import { BigNumberish, BytesLike } from 'ethers';
+import { BigNumber, BigNumberish, BytesLike } from 'ethers';
 import { useCallback, useMemo, useState } from 'react';
 import { useProvider } from 'wagmi';
 
@@ -178,9 +178,7 @@ export const useSaleTiers = (config: Config) => {
             })
           : undefined;
 
-      const remainingSupply = await getTierRemainingSupply({
-        args: [tierId],
-      });
+      const remainingSupply = await getTierRemainingSupply(tierId);
 
       return {
         ...tier,
@@ -188,13 +186,13 @@ export const useSaleTiers = (config: Config) => {
         isActive,
         hasAllowlist,
         isAllowlisted,
-        eligibleAmount,
-        remainingSupply,
+        eligibleAmount: eligibleAmount ? eligibleAmount.toString() : undefined,
+        remainingSupply: remainingSupply
+          ? remainingSupply.toString()
+          : undefined,
         isEligible:
           eligibleAmount !== undefined
-            ? Boolean(
-                !eligibleAmountError && Number(eligibleAmount.toString()) > 0,
-              )
+            ? BigNumber.from(eligibleAmount).gt(0)
             : undefined,
       };
     },
@@ -204,7 +202,6 @@ export const useSaleTiers = (config: Config) => {
       config.minterAddress,
       getEligibleAmount,
       getTierRemainingSupply,
-      eligibleAmountError,
     ],
   );
   const refetchTiers = useCallback(async () => {

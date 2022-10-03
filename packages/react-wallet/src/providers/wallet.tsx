@@ -69,7 +69,7 @@ export const WalletProvider = ({
           } catch (e) {
             try {
               const prv = new providers.Web3Provider(
-                window.ethereum as any,
+                window?.ethereum as any,
                 config.chainId,
               );
               prv.pollingInterval = 20_000;

@@ -195,7 +195,7 @@ export const CollectionSalesMintingProvider = ({
       return;
     }
 
-    // Find the first tier that is eligible and is active and has remaining supply then set it as current tier
+    // Find the first tier that is eligible and is active and has remaining supply
     let tierId = tierIds.find((id) => {
       return Boolean(
         tiers[id].isActive &&
@@ -217,25 +217,39 @@ export const CollectionSalesMintingProvider = ({
       });
     }
 
-    // If not found, look for a tier that is just active and has remaining supply
+    // If not found, look for a tier that is not active but eligible and has remaining supply
     if (tierId === undefined) {
       tierId = tierIds.find((id) => {
-        return (
-          Boolean(tiers[id].isActive) &&
-          (tiers[id].remainingSupply === undefined ||
-            BigNumber.from(tiers[id].remainingSupply).gt(0))
+        return Boolean(
+          tiers[id].isEligible &&
+            (tiers[id].remainingSupply === undefined ||
+              BigNumber.from(tiers[id].remainingSupply).gt(0)),
         );
       });
     }
 
-    // If not found, look for a tier that is eligible and has remaining supply
+    // If not found, look for a tier that is just eligible
     if (tierId === undefined) {
       tierId = tierIds.find((id) => {
-        return (
-          Boolean(tiers[id].isEligible) &&
-          (tiers[id].remainingSupply === undefined ||
-            BigNumber.from(tiers[id].remainingSupply).gt(0))
+        return Boolean(tiers[id].isEligible);
+      });
+    }
+
+    // If not found, look for a tier that is just active and has remaining supply
+    if (tierId === undefined) {
+      tierId = tierIds.find((id) => {
+        return Boolean(
+          tiers[id].isActive &&
+            (tiers[id].remainingSupply === undefined ||
+              BigNumber.from(tiers[id].remainingSupply).gt(0)),
         );
+      });
+    }
+
+    // If not found, look for a tier that is just active
+    if (tierId === undefined) {
+      tierId = tierIds.find((id) => {
+        return Boolean(tiers[id].isActive);
       });
     }
 
