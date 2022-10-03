@@ -392,12 +392,79 @@ const newChains = [
     },
     testnet: true,
   },
+  {
+    id: 42220,
+    name: 'Celo Mainnet',
+    nativeCurrency: {
+      name: 'CELO',
+      symbol: 'CELO',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://forno.celo.org',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Celo explorer',
+        url: 'https://explorer.celo.org/',
+      },
+      default: {
+        name: 'Celo explorer',
+        url: 'https://explorer.celo.org/',
+      },
+    },
+  },
+  {
+    id: 44787,
+    name: 'Celo Alfajores Testnet',
+    nativeCurrency: {
+      name: 'CELO',
+      symbol: 'CELO',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://alfajores-forno.celo-testnet.org',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Celo Alfajores Testnet explorer',
+        url: 'https://alfajores-blockscout.celo-testnet.org/',
+      },
+      default: {
+        name: 'Celo Alfajores Testnet explorer',
+        url: 'https://alfajores-blockscout.celo-testnet.org/',
+      },
+    },
+    testnet: true,
+  },
+  {
+    id: 42170,
+    name: 'Arbitrum Nova',
+    nativeCurrency: {
+      name: 'ETH',
+      symbol: 'ETH',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://nova.arbitrum.io/rpc',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Arbitrum Nova explorer',
+        url: 'https://nova-explorer.arbitrum.io/',
+      },
+      default: {
+        name: 'Arbitrum Nova explorer',
+        url: 'https://nova-explorer.arbitrum.io/',
+      },
+    },
+  },
 ];
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
 
 export const FLAIR_DEFAULT_CHAIN = FLAIR_CHAINS.find(
-  (c) => c.id === 4 /* rinkeby */,
+  (c) => c.id === 5 /* rinkeby */,
 ) as Chain;
 
 export const FLAIR_CHAIN_MACHINE_NAMES = {
