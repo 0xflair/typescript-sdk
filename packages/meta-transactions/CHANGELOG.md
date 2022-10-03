@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.4 (2022-10-03)
+
+
+### Bug Fixes
+
+* remove usehooks-ts dep ([4d3625e](https://github.com/0xflair/typescript-sdk/commit/4d3625edb1ea79c5b6f81da0a541b66e15d94f7b))
+
+
+
+
+
 ## 0.120.3 (2022-10-03)
 
 **Note:** Version bump only for package @0xflair/meta-transactions
