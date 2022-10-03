@@ -439,7 +439,7 @@ const newChains = [
   },
   {
     id: 42170,
-    name: 'Arbitrum Nova Mainnet',
+    name: 'Arbitrum Nova',
     nativeCurrency: {
       name: 'ETH',
       symbol: 'ETH',
