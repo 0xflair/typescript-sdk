@@ -539,11 +539,11 @@ const newChains = [
     },
     blockExplorers: {
       etherscan: {
-        name: 'Oasis Emerald explorer',
+        name: 'Oasis Emerald Testnet explorer',
         url: 'https://testnet.explorer.emerald.oasis.dev/',
       },
       default: {
-        name: 'Oasis Emerald explorer',
+        name: 'Oasis Emerald Testnet explorer',
         url: 'https://testnet.explorer.emerald.oasis.dev/',
       },
     },
