@@ -459,6 +459,96 @@ const newChains = [
       },
     },
   },
+  {
+    id: 40,
+    name: 'Telos',
+    nativeCurrency: {
+      name: 'TLOS',
+      symbol: 'TLOS',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://mainnet.telos.net/evm',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Telos explorer',
+        url: 'https://www.teloscan.io/',
+      },
+      default: {
+        name: 'Telos explorer',
+        url: 'https://www.teloscan.io/',
+      },
+    },
+  },
+  {
+    id: 41,
+    name: 'Telos Testnet',
+    nativeCurrency: {
+      name: 'TLOS',
+      symbol: 'TLOS',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://testnet.telos.net/evm',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Telos testnet explorer',
+        url: 'https://testnet.teloscan.io/',
+      },
+      default: {
+        name: 'Telos testnet explorer',
+        url: 'https://testnet.teloscan.io/',
+      },
+    },
+    testnet: true,
+  },
+  {
+    id: 42262,
+    name: 'Oasis Emerald',
+    nativeCurrency: {
+      name: 'ROSE',
+      symbol: 'ROSE',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://emerald.oasis.dev',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Oasis Emerald explorer',
+        url: 'https://explorer.emerald.oasis.dev/',
+      },
+      default: {
+        name: 'Oasis Emerald explorer',
+        url: 'https://explorer.emerald.oasis.dev/',
+      },
+    },
+  },
+  {
+    id: 42261,
+    name: 'Oasis Emerald Testnet',
+    nativeCurrency: {
+      name: 'ROSE',
+      symbol: 'ROSE',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://testnet.emerald.oasis.dev/',
+    },
+    blockExplorers: {
+      etherscan: {
+        name: 'Oasis Emerald explorer',
+        url: 'https://testnet.explorer.emerald.oasis.dev/',
+      },
+      default: {
+        name: 'Oasis Emerald explorer',
+        url: 'https://testnet.explorer.emerald.oasis.dev/',
+      },
+    },
+    testnet: true,
+  },
 ];
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
