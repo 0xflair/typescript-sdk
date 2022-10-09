@@ -551,7 +551,7 @@ const newChains = [
   },
 ];
 
-const WagmiChains = allChains.filter((c) => [4, 421611].includes(c.id));
+const WagmiChains = allChains.filter((c) => [3, 4, 421611].includes(c.id));
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
 
