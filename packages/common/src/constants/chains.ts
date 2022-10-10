@@ -551,12 +551,12 @@ const newChains = [
   },
 ];
 
-const WagmiChains = allChains.filter((c) => [3, 4, 421611].includes(c.id));
+const WagmiChains = allChains.filter((c) => ![3, 4, 421611].includes(c.id));
 
 export const FLAIR_CHAINS: Chain[] = [...WagmiChains, ...newChains];
 
 export const FLAIR_DEFAULT_CHAIN = FLAIR_CHAINS.find(
-  (c) => c.id === 5 /* rinkeby */,
+  (c) => c.id === 137 /* polygon */,
 ) as Chain;
 
 export const FLAIR_CHAIN_MACHINE_NAMES = {
