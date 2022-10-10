@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.8 (2022-10-10)
+
+**Note:** Version bump only for package @0xflair/react-nft-collections
+
+
+
+
+
 ## 0.120.7 (2022-10-10)
 
 **Note:** Version bump only for package @0xflair/react-nft-collections
