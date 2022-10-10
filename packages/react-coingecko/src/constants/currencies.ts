@@ -81,4 +81,10 @@ export const KNOWN_CRYPTO_CURRENCIES: CryptoCurrency[] = [
     icon: 'ROSE',
     coinGeckoId: 'oasis-network',
   },
+  {
+    symbol: 'CELO',
+    name: 'CELO',
+    icon: 'CELO',
+    coinGeckoId: 'celo',
+  },
 ];
