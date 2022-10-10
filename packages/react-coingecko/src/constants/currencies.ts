@@ -69,4 +69,16 @@ export const KNOWN_CRYPTO_CURRENCIES: CryptoCurrency[] = [
     icon: 'CRO',
     coinGeckoId: 'crypto-com-chain',
   },
+  {
+    symbol: 'TLOS',
+    name: 'TLOS',
+    icon: 'TLOS',
+    coinGeckoId: 'telos',
+  },
+  {
+    symbol: 'ROSE',
+    name: 'ROSE',
+    icon: 'ROSE',
+    coinGeckoId: 'oasis-network',
+  },
 ];
