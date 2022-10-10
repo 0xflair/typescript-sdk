@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.9 (2022-10-10)
+
+
+### Bug Fixes
+
+* correct condition to filter out deprecated chains ([22e909c](https://github.com/0xflair/typescript-sdk/commit/22e909c2ccc7d03be13e7442bf291a631a56c7c4))
+
+
+
+
+
 ## 0.120.8 (2022-10-10)
 
 **Note:** Version bump only for package @0xflair/react-address-lists
