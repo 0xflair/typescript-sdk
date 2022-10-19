@@ -131,7 +131,7 @@ const newChains = [
       decimals: 18,
     },
     rpcUrls: {
-      default: 'https://rpc.ankr.com/fantom/',
+      default: 'https://rpc.ankr.com/fantom',
     },
     blockExplorers: {
       etherscan: {
@@ -153,7 +153,7 @@ const newChains = [
       decimals: 18,
     },
     rpcUrls: {
-      default: 'https://rpc.testnet.fantom.network/',
+      default: 'https://rpc.testnet.fantom.network',
     },
     blockExplorers: {
       etherscan: {
@@ -198,7 +198,7 @@ const newChains = [
       decimals: 18,
     },
     rpcUrls: {
-      default: 'https://testnet.aurora.dev/',
+      default: 'https://testnet.aurora.dev',
     },
     blockExplorers: {
       etherscan: {
@@ -361,11 +361,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Cronos Chain explorer',
-        url: 'https://cronoscan.com/',
+        url: 'https://cronoscan.com',
       },
       default: {
         name: 'Cronos Chain explorer',
-        url: 'https://cronoscan.com/',
+        url: 'https://cronoscan.com',
       },
     },
   },
@@ -383,11 +383,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Cronos Chain Testnet explorer',
-        url: 'https://testnet.cronoscan.com/',
+        url: 'https://testnet.cronoscan.com',
       },
       default: {
         name: 'Cronos Chain Testnet explorer',
-        url: 'https://testnet.cronoscan.com/',
+        url: 'https://testnet.cronoscan.com',
       },
     },
     testnet: true,
@@ -406,11 +406,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Celo explorer',
-        url: 'https://explorer.celo.org/',
+        url: 'https://explorer.celo.org',
       },
       default: {
         name: 'Celo explorer',
-        url: 'https://explorer.celo.org/',
+        url: 'https://explorer.celo.org',
       },
     },
   },
@@ -428,11 +428,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Celo Alfajores Testnet explorer',
-        url: 'https://alfajores-blockscout.celo-testnet.org/',
+        url: 'https://alfajores-blockscout.celo-testnet.org',
       },
       default: {
         name: 'Celo Alfajores Testnet explorer',
-        url: 'https://alfajores-blockscout.celo-testnet.org/',
+        url: 'https://alfajores-blockscout.celo-testnet.org',
       },
     },
     testnet: true,
@@ -451,11 +451,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Arbitrum Nova explorer',
-        url: 'https://nova-explorer.arbitrum.io/',
+        url: 'https://nova-explorer.arbitrum.io',
       },
       default: {
         name: 'Arbitrum Nova explorer',
-        url: 'https://nova-explorer.arbitrum.io/',
+        url: 'https://nova-explorer.arbitrum.io',
       },
     },
   },
@@ -473,11 +473,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Telos explorer',
-        url: 'https://www.teloscan.io/',
+        url: 'https://www.teloscan.io',
       },
       default: {
         name: 'Telos explorer',
-        url: 'https://www.teloscan.io/',
+        url: 'https://www.teloscan.io',
       },
     },
   },
@@ -495,11 +495,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Telos testnet explorer',
-        url: 'https://testnet.teloscan.io/',
+        url: 'https://testnet.teloscan.io',
       },
       default: {
         name: 'Telos testnet explorer',
-        url: 'https://testnet.teloscan.io/',
+        url: 'https://testnet.teloscan.io',
       },
     },
     testnet: true,
@@ -518,11 +518,11 @@ const newChains = [
     blockExplorers: {
       etherscan: {
         name: 'Oasis Emerald explorer',
-        url: 'https://explorer.emerald.oasis.dev/',
+        url: 'https://explorer.emerald.oasis.dev',
       },
       default: {
         name: 'Oasis Emerald explorer',
-        url: 'https://explorer.emerald.oasis.dev/',
+        url: 'https://explorer.emerald.oasis.dev',
       },
     },
   },
@@ -535,16 +535,16 @@ const newChains = [
       decimals: 18,
     },
     rpcUrls: {
-      default: 'https://testnet.emerald.oasis.dev/',
+      default: 'https://testnet.emerald.oasis.dev',
     },
     blockExplorers: {
       etherscan: {
         name: 'Oasis Emerald Testnet explorer',
-        url: 'https://testnet.explorer.emerald.oasis.dev/',
+        url: 'https://testnet.explorer.emerald.oasis.dev',
       },
       default: {
         name: 'Oasis Emerald Testnet explorer',
-        url: 'https://testnet.explorer.emerald.oasis.dev/',
+        url: 'https://testnet.explorer.emerald.oasis.dev',
       },
     },
     testnet: true,
