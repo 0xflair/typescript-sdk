@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.10 (2022-10-19)
+
+
+### Bug Fixes
+
+* remove extra trailing slash ([53734ba](https://github.com/0xflair/typescript-sdk/commit/53734ba50ddd6a9f27df5b1c56fbd44a85721052))
+
+
+
+
+
 ## 0.120.9 (2022-10-10)
 
 
