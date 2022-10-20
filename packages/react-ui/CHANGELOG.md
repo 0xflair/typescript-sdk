@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.121.0 (2022-10-20)
+
+
+### Features
+
+* allow manually putting token ids ([ec96b01](https://github.com/0xflair/typescript-sdk/commit/ec96b0132a6790ca6fb502c8fc7ea64e471f9fef))
+
+
+
+
+
 ## 0.120.11 (2022-10-20)
 
 
