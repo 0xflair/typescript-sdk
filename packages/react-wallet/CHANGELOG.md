@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.120.11 (2022-10-20)
+
+
+### Bug Fixes
+
+* fetch token states 500 at a time ([ec82864](https://github.com/0xflair/typescript-sdk/commit/ec828642b6113e463cf7de06cc6e9c69c595267f))
+
+
+
+
+
 ## 0.120.10 (2022-10-19)
 
 
