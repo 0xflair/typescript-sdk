@@ -102,9 +102,9 @@ export const useStreamTokensInCustody = (config: Config) => {
         for (
           let i = 0, l = Number(totalSupply?.toString() || 20000);
           i <= l;
-          i = i + 5000
+          i = i + 500
         ) {
-          const tokens = await fetchTokensInCustodyInRange(i, i + 5000);
+          const tokens = await fetchTokensInCustodyInRange(i, i + 500);
 
           if (tokens && tokens.length) {
             finalData.push(...tokens);
