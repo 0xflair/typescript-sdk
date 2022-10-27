@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.121.2 (2022-10-27)
+
+
+### Bug Fixes
+
+* use full-form for minting function ([8cae3f2](https://github.com/0xflair/typescript-sdk/commit/8cae3f2fc3df2642782cb0ab91c370bb3af8f3ce))
+
+
+
+
+
 ## 0.121.1 (2022-10-24)
 
 **Note:** Version bump only for package @0xflair/react-coingecko
