@@ -29,7 +29,7 @@ export const useRoleBasedMinter = ({
     contractInterface,
     contractAddress,
     signerOrProvider,
-    functionName: 'mintByRole',
+    functionName: 'mintByRole(address,uint256)',
     args: [toAddress, mintCount] as ArgsType,
   });
 };

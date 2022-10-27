@@ -29,7 +29,7 @@ export const useOwnerMinter = ({
     contractInterface,
     contractAddress,
     signerOrProvider,
-    functionName: 'mintByOwner',
+    functionName: 'mintByOwner(address,uint256)',
     args: [toAddress, mintCount] as ArgsType,
   });
 };
