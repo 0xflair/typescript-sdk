@@ -111,8 +111,24 @@ export const useStreamTokensInCustody = (config: Config) => {
         setIsLoading(true);
         const finalData: BigNumberish[] = [];
 
-        // Enumerate allTokensInCustody first
-        if (allTokensInCustody && allTokensInCustody.length < 1000) {
+        // Enumerate to 20,000
+        const custodyStatusesPromises = [];
+
+        for (
+          let i = 0, l = Number(totalSupply?.toString() || 20_000);
+          i <= l;
+          i = i + 500
+        ) {
+          custodyStatusesPromises.push(fetchTokensInCustodyInRange(i, i + 500));
+        }
+
+        for (const tokens of await Promise.all(custodyStatusesPromises)) {
+          if (tokens && tokens.length) {
+            finalData.push(...tokens);
+          }
+        }
+
+        if (!finalData.length && allTokensInCustody) {
           const custodyStatuses = await Promise.all(
             allTokensInCustody.map((token) =>
               contract.tokensInCustody(
@@ -128,25 +144,6 @@ export const useStreamTokensInCustody = (config: Config) => {
 
             if (inCustody) {
               finalData.push(allTokensInCustody[i].tokenId);
-            }
-          }
-        } else {
-          // Otherwise enumerate to 20,000
-          const custodyStatusesPromises = [];
-
-          for (
-            let i = 0, l = Number(totalSupply?.toString() || 20000);
-            i <= l;
-            i = i + 500
-          ) {
-            custodyStatusesPromises.push(
-              fetchTokensInCustodyInRange(i, i + 500),
-            );
-          }
-
-          for (const tokens of await Promise.all(custodyStatusesPromises)) {
-            if (tokens && tokens.length) {
-              finalData.push(...tokens);
             }
           }
         }
