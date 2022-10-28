@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.122.2 (2022-10-28)
+
+
+### Bug Fixes
+
+* first try to enumerate then fallback to checking tokens in custody ([5094f78](https://github.com/0xflair/typescript-sdk/commit/5094f78f71a873db74cf0536d728c43b165c3369))
+
+
+
+
+
 ## 0.122.1 (2022-10-28)
 
 
