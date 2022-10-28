@@ -1,3 +1,3 @@
-export * from './infura';
+export * from './providers';
 export * from './backend';
 export * from './login';

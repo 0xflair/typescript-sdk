@@ -1,5 +1,6 @@
 import { MagicLinkConnector, SafeConnector } from '@0xflair/common';
 import { FLAIR_CHAINS, FLAIR_DEFAULT_CHAIN } from '@0xflair/react-common';
+import { AlchemyProvider } from '@ethersproject/providers';
 import { providers } from 'ethers';
 import {
   PropsWithChildren,
@@ -13,7 +14,7 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 
-import { FLAIR_INFURA_PROJECT_ID } from '../constants';
+import { FLAIR_ALCHEMY_API_KEY, FLAIR_INFURA_PROJECT_ID } from '../constants';
 import { useAutoConnect } from '../hooks/useAutoConnect';
 import stylesheet from '../index.css';
 
@@ -21,6 +22,7 @@ export type WalletProviderProps = {
   children?: ReactNode;
   appName?: string;
   infuraId?: string;
+  alchemyKey?: string;
   custodialWallet?: boolean;
   injectStyles?: boolean;
   wagmiOverrides?: Record<string, any>;
@@ -38,6 +40,7 @@ export const WalletProvider = ({
   children,
   appName = 'Flair',
   infuraId = FLAIR_INFURA_PROJECT_ID,
+  alchemyKey = FLAIR_ALCHEMY_API_KEY,
   custodialWallet = false,
   injectStyles = true,
   wagmiOverrides,
@@ -45,7 +48,15 @@ export const WalletProvider = ({
   const provider = useCallback(
     (config: { chainId?: number }) => {
       try {
-        const prv = new providers.InfuraProvider(config.chainId, infuraId);
+        if (!config.chainId) {
+          throw new Error('Chain ID is required');
+        }
+
+        const network = AlchemyProvider.getNetwork(config.chainId);
+        const prv = new providers.JsonRpcBatchProvider(
+          AlchemyProvider.getUrl(network, alchemyKey),
+          config.chainId,
+        );
         prv.pollingInterval = 20_000;
         return prv;
       } catch (e) {
@@ -53,7 +64,10 @@ export const WalletProvider = ({
           const rpcUrl = FLAIR_CHAINS.find((x) => x.id === config.chainId)
             ?.rpcUrls.default;
           if (rpcUrl) {
-            const prv = new providers.JsonRpcProvider(rpcUrl, config.chainId);
+            const prv = new providers.JsonRpcBatchProvider(
+              rpcUrl,
+              config.chainId,
+            );
             prv.pollingInterval = 20_000;
             return prv;
           } else {
@@ -83,7 +97,7 @@ export const WalletProvider = ({
         }
       }
     },
-    [infuraId],
+    [alchemyKey],
   );
 
   const connectors = useCallback(

@@ -4,6 +4,7 @@ import {
   PredefinedReadContractConfig,
   useHasAnyOfFeatures,
 } from '@0xflair/react-common';
+import { useNftTokensByWallet } from '@0xflair/react-data-query';
 import { useERC721TotalSupply } from '@0xflair/react-openzeppelin';
 import { BytesLike } from '@ethersproject/bytes';
 import { BigNumber, BigNumberish } from 'ethers';
@@ -43,6 +44,17 @@ export const useStreamTokensInCustody = (config: Config) => {
     ],
   });
 
+  const {
+    data: allTokensInCustody,
+    error: allTokensInCustodyError,
+    isLoading: allTokensInCustodyLoading,
+  } = useNftTokensByWallet({
+    env: config.env,
+    chainId: config.chainId,
+    collectionAddress: config.ticketTokenAddress?.toString(),
+    walletAddress: config.contractAddress,
+  });
+
   const { data: totalSupply } = useERC721TotalSupply({
     chainId: config.chainId,
     contractAddress: config.ticketTokenAddress?.toString() as string,
@@ -72,7 +84,7 @@ export const useStreamTokensInCustody = (config: Config) => {
         finalWalletAddress,
         startTokenId,
         endTokenId,
-      )) as any[];
+      )) as boolean[];
 
       return result.reduce<BigNumberish[]>(
         (list, inCustody, tokenIdMinusStartTokenId) =>
@@ -93,21 +105,49 @@ export const useStreamTokensInCustody = (config: Config) => {
       return;
     }
 
-    if (supportsTokensInCustody) {
+    if (supportsTokensInCustody && contract && finalWalletAddress) {
       try {
         setError(undefined);
         setIsLoading(true);
         const finalData: BigNumberish[] = [];
 
-        for (
-          let i = 0, l = Number(totalSupply?.toString() || 20000);
-          i <= l;
-          i = i + 500
-        ) {
-          const tokens = await fetchTokensInCustodyInRange(i, i + 500);
+        // Enumerate allTokensInCustody first
+        if (allTokensInCustody && allTokensInCustody.length < 1000) {
+          const custodyStatuses = await Promise.all(
+            allTokensInCustody.map((token) =>
+              contract.tokensInCustody(
+                finalWalletAddress,
+                token.tokenId,
+                token.tokenId,
+              ),
+            ),
+          );
 
-          if (tokens && tokens.length) {
-            finalData.push(...tokens);
+          for (let i = 0; i < custodyStatuses.length; i++) {
+            const [inCustody] = custodyStatuses[i];
+
+            if (inCustody) {
+              finalData.push(allTokensInCustody[i].tokenId);
+            }
+          }
+        } else {
+          // Otherwise enumerate to 20,000
+          const custodyStatusesPromises = [];
+
+          for (
+            let i = 0, l = Number(totalSupply?.toString() || 20000);
+            i <= l;
+            i = i + 500
+          ) {
+            custodyStatusesPromises.push(
+              fetchTokensInCustodyInRange(i, i + 500),
+            );
+          }
+
+          for (const tokens of await Promise.all(custodyStatusesPromises)) {
+            if (tokens && tokens.length) {
+              finalData.push(...tokens);
+            }
           }
         }
 
@@ -120,7 +160,10 @@ export const useStreamTokensInCustody = (config: Config) => {
       setIsLoading(false);
     }
   }, [
+    allTokensInCustody,
+    contract,
     fetchTokensInCustodyInRange,
+    finalWalletAddress,
     isLoading,
     supportsTokensInCustody,
     totalSupply,
@@ -133,7 +176,7 @@ export const useStreamTokensInCustody = (config: Config) => {
 
     refetchTokensInCustody();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [supportsTokensInCustody, finalWalletAddress]);
+  }, [supportsTokensInCustody, finalWalletAddress, allTokensInCustody]);
 
   return {
     data,
