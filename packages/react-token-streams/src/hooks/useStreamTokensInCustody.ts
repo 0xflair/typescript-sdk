@@ -170,7 +170,10 @@ export const useStreamTokensInCustody = (config: Config) => {
   ]);
 
   useMemo(() => {
-    if (!supportsTokensInCustody) {
+    if (
+      !supportsTokensInCustody ||
+      (allTokensInCustodyLoading && !allTokensInCustody)
+    ) {
       return;
     }
 
