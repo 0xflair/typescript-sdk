@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.122.1 (2022-10-28)
+
+
+### Bug Fixes
+
+* wait for all tokens in custody to show up ([73a1cab](https://github.com/0xflair/typescript-sdk/commit/73a1cab1c56ad9852dc7285f4956aca54dd8efa9))
+
+
+
+
+
 # 0.122.0 (2022-10-28)
 
 
