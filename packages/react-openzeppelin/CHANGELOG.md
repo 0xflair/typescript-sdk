@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.123.0 (2022-11-08)
+
+
+### Features
+
+* allow passing default to meta-tx client ([033ceb9](https://github.com/0xflair/typescript-sdk/commit/033ceb93c58499149ccb1f21594223188bd1db58))
+
+
+
+
+
 ## 0.122.2 (2022-10-28)
 
 
