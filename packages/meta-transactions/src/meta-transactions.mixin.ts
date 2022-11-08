@@ -91,12 +91,14 @@ export const createFlairContractWithMetaTransactions = <
   addressOrName?: string;
   signer?: Signer;
   forwarder?: string;
+  defaults?: Partial<MetaTransaction>;
 }): MetaTransactionsAugmentedContract<T> => {
   const metaTxClient = new MetaTransactionsClient({
     env: config.env || Environment.PROD,
     chainId: config.chainId,
     flairClientId: config.flairClientId,
     forwarder: config.forwarder,
+    defaults: config.defaults,
   });
 
   const contract = new FlairContract(
