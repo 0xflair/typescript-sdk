@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.123.1 (2022-11-12)
+
+
+### Bug Fixes
+
+* remove duplicate token ids in streams ([0eeebb4](https://github.com/0xflair/typescript-sdk/commit/0eeebb4e526efc001a48b3031450fc84820eb9a6))
+
+
+
+
+
 # 0.123.0 (2022-11-08)
 
 
