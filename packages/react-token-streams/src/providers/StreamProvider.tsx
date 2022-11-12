@@ -201,11 +201,17 @@ export const StreamProvider = ({
   const ticketTokens = useMemo(() => {
     return _.uniqBy(
       [
-        ...(walletNfts || []),
+        ...(walletNfts || []).map(
+          (token) =>
+            ({
+              ...token,
+              tokenId: BigNumber.from(token.tokenId).toString(),
+            } as NftToken),
+        ),
         ...(tokenIdsInCustody || []).map(
           (tokenId) =>
             ({
-              tokenId,
+              tokenId: BigNumber.from(tokenId).toString(),
               contractAddress: ticketTokenAddress,
               ownerAddress: stream?.contractAddress,
             } as NftToken),

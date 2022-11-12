@@ -117,7 +117,7 @@ export const useStreamTokensInCustody = (config: Config) => {
         for (
           let i = 0, l = Number(totalSupply?.toString() || 20_000);
           i <= l;
-          i = i + 500
+          i = i + 500 + 1
         ) {
           custodyStatusesPromises.push(fetchTokensInCustodyInRange(i, i + 500));
         }
