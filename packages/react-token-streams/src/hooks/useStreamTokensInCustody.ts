@@ -111,14 +111,10 @@ export const useStreamTokensInCustody = (config: Config) => {
         setIsLoading(true);
         const finalData: BigNumberish[] = [];
 
-        // Enumerate to 20,000
+        // Enumerate to 15,000
         const custodyStatusesPromises = [];
 
-        for (
-          let i = 0, l = Number(totalSupply?.toString() || 20_000);
-          i <= l;
-          i = i + 500 + 1
-        ) {
+        for (let i = 0, l = Number(15_000); i <= l; i = i + 500 + 1) {
           custodyStatusesPromises.push(fetchTokensInCustodyInRange(i, i + 500));
         }
 
@@ -163,7 +159,6 @@ export const useStreamTokensInCustody = (config: Config) => {
     finalWalletAddress,
     isLoading,
     supportsTokensInCustody,
-    totalSupply,
   ]);
 
   useMemo(() => {

@@ -28,7 +28,7 @@ export const StreamTicketTokenSelector = ({ as, ...attributes }: Props) => {
         ticketTokens.map((token) => (
           <div
             key={token.tokenId}
-            className="ticket-token relative flex gap-2 items-start py-4"
+            className="ticket-token relative flex gap-2 items-start py-1"
           >
             <div className="token-checkbox flex items-center h-5">
               <input
