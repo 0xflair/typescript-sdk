@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.123.2 (2022-11-27)
+
+
+### Bug Fixes
+
+* always enumerate until 20k token ids ([598fdf9](https://github.com/0xflair/typescript-sdk/commit/598fdf9d5072f649884f01bd67ad1070a3f52d87))
+
+
+
+
+
 ## 0.123.1 (2022-11-12)
 
 
